@@ -7,6 +7,10 @@ var weather_url = "../../data/ca_weather.csv";
 var daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 // Define a time categories array
 var timeCategories = ['early_morning', 'morning', 'afternoon', 'evening'];
+// Array to hold selected filter options
+var filterArray = [];
+var selectionArray = [];
+var filteredDataArray = [];
 
 // STEP 1: called by draw plotly & update plotly
 // FUNCTION: CREATE OBJECT TO USE
@@ -122,8 +126,8 @@ function createObject(filteredData) {
     }}
 
     // Print object
-    console.log("Aggregate Object:")
-    console.log(weekResults);
+    // console.log("Aggregate Object:")
+    // console.log(weekResults);
 
     // CODE TO MAKE BASE OBJECT A JSON STRING (FOR QUICKER INITIALIZING)
     // var jsonObject = JSON.stringify(weekResults);
@@ -191,7 +195,7 @@ function calculate(object) {
 
     });
 
-    console.log("z", z);
+    // console.log("z", z);
     // Return array for vis
     return(z);
 }; 
@@ -201,6 +205,11 @@ function calculate(object) {
 function updatePlotly(data, option) {
     // Prevent page from refreshing
     d3.event.preventDefault();
+
+    // If data is already filtered by city or month
+    if (filteredDataArray.length > 0) {
+        var data = filteredDataArray[0];
+    }
 
     // Create object of values (with new data)
     var weekResults = createObject(data);
@@ -239,7 +248,7 @@ function updatePlotly(data, option) {
     };
 
     // Log when the chart will be updated
-    console.log("Updating chart...");
+    // console.log("Updating chart...");
 
     // Restyle the vis
     Plotly.restyle("myDiv", "z", [z]);
@@ -339,7 +348,7 @@ d3.csv(accidents_url).then(function(accidents_data) {
         updatePlotly(accidents_data, option);
 
         // RESET titles
-        d3.select("#vis-title").text(option);
+        // d3.select("#vis-title").text(option);
         d3.select(".btn-city").text("City");
         d3.select(".btn-month").text("Month");
 
@@ -358,21 +367,115 @@ d3.csv(accidents_url).then(function(accidents_data) {
 
         // Reset filter array
         filterArray = [];
+        filteredDataArray = [];
+        selectionArray = [];
     });
 
-    // BUTTON OPTIONS
-    // When a "type of calculation" button is clicked
-    d3.selectAll(".btn-light").on("click", function() {
+    // // BUTTON OPTIONS
+    // // When a "type of calculation" button is clicked
+    // d3.selectAll(".btn-light").on("click", function() {
 
-        var option = d3.select(this);
-        var option_id = option.attr("id");
+    //     var option = d3.select(this);
+    //     var option_id = option.attr("id");
 
-        console.log(option_id);
+    //     console.log(option_id);
 
+    //     // Set elements on page to match the chosen selection
+    //     if (option_id === "accident-count") {
+    //         // Change selected option
+    //         var selection = "Accident Count";
+    //         // Change title
+    //         d3.select("#vis-title").text(selection);
+    //         // Change active button
+    //         countButton.classed("active", true);
+    //         visibilityButton.classed("active", false);
+    //         severityButton.classed("active", false);
+    //         windSpeedButton.classed("active", false);
+    //         precipButton.classed("active", false);
+
+            
+    //     }
+    //     else if (option_id === "average-visibility") {
+    //         // Change selected option
+    //         var selection = "Average Visibility";
+    //         // Change title
+    //         d3.select("#vis-title").text(selection);
+    //         // Change active button
+    //         visibilityButton.classed("active", true);
+    //         countButton.classed("active", false);
+    //         severityButton.classed("active", false);
+    //         windSpeedButton.classed("active", false);
+    //         precipButton.classed("active", false);
+            
+    //     }
+    //     else if (option_id === "average-severity") {
+    //         // Change selected option
+    //         var selection = "Average Severity";
+    //         // Change title
+    //         d3.select("#vis-title").text(selection);
+    //         // Change active button
+    //         severityButton.classed("active", true);
+    //         countButton.classed("active", false);
+    //         visibilityButton.classed("active", false);
+    //         windSpeedButton.classed("active", false);
+    //         precipButton.classed("active", false);
+    //     }
+    //     else if (option_id === "average-windspeed") {
+    //         // Change selected option
+    //         var selection = "Average Wind Speed";
+    //         // Change title
+    //         d3.select("#vis-title").text(selection);
+    //         // Change active button
+    //         windSpeedButton.classed("active", true);
+    //         countButton.classed("active", false);
+    //         severityButton.classed("active", false);
+    //         visibilityButton.classed("active", false);
+    //         precipButton.classed("active", false);
+            
+    //     }
+    //     else if (option_id === "average-precipitation") {
+    //         // Change selected option
+    //         var selection = "Average Precipitation";
+    //         // Change title
+    //         d3.select("#vis-title").text(selection);
+    //         // Change active button
+    //         precipButton.classed("active", true);
+    //         countButton.classed("active", false);
+    //         severityButton.classed("active", false);
+    //         windSpeedButton.classed("active", false);
+    //         visibilityButton.classed("active", false);
+    //     };
+
+    //     console.log("Option Selected:", selection);
+
+
+    //     // Update the plotly chart: needs to be filtered Data
+    //     // updatePlotly(accidents_data, selection);
+        
+    // });
+
+    
+
+    // DROPDOWN BUTTONS
+    // d3.selectAll("#dropdownMenuButton").on("click", function() {
+        d3.selectAll(".btn-action").on("click", function() {
+
+        // Define selected button
+        var selButton = d3.select(this);
+        var selButtonID = selButton.attr("id");
+
+        if (selButtonID === "dropdownMenuButton") {
+            var selButtonValue = selButton.attr("value");
+            // console.log("Button: ", selButtonValue)
+        }
         // Set elements on page to match the chosen selection
-        if (option_id === "accident-count") {
+        else if (selButtonID === "accident-count") {
+            // console.log("Button: ", selButtonID);
             // Change selected option
             var selection = "Accident Count";
+
+            selectionArray.splice(0, 1, selection);
+
             // Change title
             d3.select("#vis-title").text(selection);
             // Change active button
@@ -382,11 +485,16 @@ d3.csv(accidents_url).then(function(accidents_data) {
             windSpeedButton.classed("active", false);
             precipButton.classed("active", false);
 
+            updatePlotly(accidents_data, selection);
+
             
         }
-        else if (option_id === "average-visibility") {
+        else if (selButtonID === "average-visibility") {
+            // console.log("Button: ", selButtonID);
             // Change selected option
             var selection = "Average Visibility";
+
+            selectionArray.splice(0, 1, selection);
             // Change title
             d3.select("#vis-title").text(selection);
             // Change active button
@@ -395,11 +503,16 @@ d3.csv(accidents_url).then(function(accidents_data) {
             severityButton.classed("active", false);
             windSpeedButton.classed("active", false);
             precipButton.classed("active", false);
+
+            updatePlotly(accidents_data, selection);
             
         }
-        else if (option_id === "average-severity") {
+        else if (selButtonID === "average-severity") {
+            // console.log("Button: ", selButtonID);
             // Change selected option
             var selection = "Average Severity";
+            selectionArray.splice(0, 1, selection);
+
             // Change title
             d3.select("#vis-title").text(selection);
             // Change active button
@@ -408,10 +521,15 @@ d3.csv(accidents_url).then(function(accidents_data) {
             visibilityButton.classed("active", false);
             windSpeedButton.classed("active", false);
             precipButton.classed("active", false);
+
+            updatePlotly(accidents_data, selection);
         }
-        else if (option_id === "average-windspeed") {
+        else if (selButtonID === "average-windspeed") {
+            // console.log("Button: ", selButtonID);
             // Change selected option
             var selection = "Average Wind Speed";
+            selectionArray.splice(0, 1, selection);
+
             // Change title
             d3.select("#vis-title").text(selection);
             // Change active button
@@ -420,11 +538,16 @@ d3.csv(accidents_url).then(function(accidents_data) {
             severityButton.classed("active", false);
             visibilityButton.classed("active", false);
             precipButton.classed("active", false);
+
+            updatePlotly(accidents_data, selection);
             
         }
-        else if (option_id === "average-precipitation") {
+        else if (selButtonID === "average-precipitation") {
+            // console.log("Button: ", selButtonID);
             // Change selected option
             var selection = "Average Precipitation";
+            selectionArray.splice(0, 1, selection);
+
             // Change title
             d3.select("#vis-title").text(selection);
             // Change active button
@@ -433,25 +556,14 @@ d3.csv(accidents_url).then(function(accidents_data) {
             severityButton.classed("active", false);
             windSpeedButton.classed("active", false);
             visibilityButton.classed("active", false);
+
+            updatePlotly(accidents_data, selection);
         };
 
-        console.log("Option Selected:", selection);
+                
+            
 
-        // Update the plotly chart
-        updatePlotly(accidents_data, selection);
-        
-    });
-
-    // Array to hold selected filter options
-    var filterArray = [];
-
-    // DROPDOWN BUTTONS
-    d3.selectAll("#dropdownMenuButton").on("click", function() {
-        
-        // Define selected button
-        var selButton = d3.select(this);
-        var selButtonValue = selButton.attr("value");
-        console.log("Button: ", selButtonValue);
+        // console.log("Option Selected:", selection);
 
         // DROPDOWN SELECTIONS
         d3.selectAll("option").on("click", function() {
@@ -530,34 +642,42 @@ d3.csv(accidents_url).then(function(accidents_data) {
                     var filteredData = accidents_data.filter(element => moment(element.date).format('MMMM') === filterArray[1]).filter(element => element.city === filterArray[0]);
                 };
                 
+                
             }
 
             // Define current data filter option
-            var current_option = d3.select(".active").text();
+            var selection = d3.select(".active").text();
+        
 
-            // // Add options to filter array
-            // if (filterArray[2] === undefined) {
-            //     // Add current calculation option to array
-            //     filterArray.splice(2, 0, current_option);
-            // }
-            // else if (filterArray[2] !== undefined) {
-            //     // Add current calculation option to array
-            //     filterArray.splice(2, 1, current_option);
-            // }
+            updatePlotly(filteredData, selection);
+            createTable(filteredData);
+
+            // console.log(filteredData);
+            filteredDataArray.splice(0, 1, filteredData);
+            // console.log("Data Array", filteredDataArray[0]);
+            // console.log("Current Selection", selectionArray);
+        });
+
             
+            // console.log("Data Array", filteredDataArray[0]);
+            var selection = selectionArray[0];
 
             // Check values
-            console.log("Filters", filterArray);
-            console.log("Filtered Data: ");
-            console.log(filteredData);
-            console.log("Current Option:", current_option); // change to selection
-
-            // Call update plotly function
-            updatePlotly(filteredData, current_option);
-            createTable(filteredData);
+            // console.log("Filters", filterArray);
+            // console.log("Filtered Data: ");
+            // console.log(filteredData);
+            // console.log("Current Option:", current_option); // change to selection
+            // console.log("Current Selection:", selection);
         
-        });
+            
+
+            
+            
+
+
+        // });
     });
+
 
 // ONLY RUNS AT BEGINNING
 // Function to initialize the plotly vis
