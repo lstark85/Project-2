@@ -207,6 +207,7 @@ function calculate(object) {
                 }
                 else {
                     var calculation = object[timeCategories[y]][daysOfTheWeek[x]][datasetOption].sum / object[timeCategories[y]][daysOfTheWeek[x]][datasetOption].count;
+                    var calculation = calculation.toFixed(2);
                 };
 
                 // Separate calculations by time category
@@ -268,14 +269,25 @@ function drawPlotly(data, option) {
         var z = z_array[4];
     };
 
+    // var y = ['Early Morning', 'Morning', 'Afternoon', 'Evening'];
+
+    // Define color scale
+    var colorscaleValue = [
+        [0, '#7fcdbb'],
+        [1, '#2c7fb8']
+        // [2, '#7fcdbb']
+    ];
+    // ['#edf8b1','#7fcdbb','#2c7fb8']
+
     // DEFINE MAP OBJECTS FOR MAPPING
     // Heat map:
     var data = [
         {
             z: z,
             x: daysOfTheWeek,
-            y: ['Early Morning', 'Morning', 'Afternoon', 'Evening'],
+            y: timeCategories,
             type: 'heatmap',
+            colorscale: colorscaleValue,
             hoverongaps: false
         }
     ];
@@ -287,7 +299,37 @@ function drawPlotly(data, option) {
                         text:'Number of Accidents',
                         font: {
                             size: 24
-                        }}}
+                        }},
+                    annotations: []}
+
+    for ( var i = 0; i < timeCategories.length; i++ ) {
+        for ( var j = 0; j < daysOfTheWeek.length; j++ ) {
+            var currentValue = z[i][j];
+            if (currentValue != 0.0) {
+            var textColor = 'white';
+            }
+            else {
+            var textColor = 'black';
+            }
+            var result = {
+            xref: 'x1',
+            yref: 'y1',
+            x: daysOfTheWeek[j],
+            y: timeCategories[i],
+            text: z[i][j],
+            font: {
+                family: 'Arial',
+                size: 12,
+                color: 'rgb(50, 171, 96)'
+            },
+            showarrow: false,
+            font: {
+                color: textColor
+            }
+            };
+            layout.annotations.push(result);
+        }
+        }
 
         // Return new plot
         return(Plotly.newPlot('myDiv', data, layout));
@@ -300,7 +342,7 @@ function updatePlotly(data, option) {
     // Prevent page from refreshing
     d3.event.preventDefault();
 
-    // If data is already filtered by city or month
+    // If data is already filtered by city
     if (filteredDataArray.length > 0) {
         var data = filteredDataArray[0];
     }
@@ -313,36 +355,68 @@ function updatePlotly(data, option) {
     // console.log(z_array);
 
     // Use selected option to define which dataset will be drawn
-    if (option === "Accident Count" || option === "Number of Accidents") {
+    if (option === "accident-count") {
         var z = z_array[0];
         var title = "Number of Accidents";
     }
-    else if (option === "Average Severity" || option === "Average Severity of Accidents") {
+    else if (option === "average-severity") {
         var z = z_array[1];
         var title = "Average Severity of Accidents";
     }
-    else if (option === "Average Visibility" || option === "Average Visibility of Day") {
+    else if (option === "average-visibility") {
         var z = z_array[2];
         var title = "Average Visibility of Day (in miles)";
     }
-    else if (option === "Average Wind Speed" || option === "Average Wind Speed of Day") {
+    else if (option === "average-windspeed") {
         var z = z_array[3];
         var title = "Average Wind Speed of Day (in mph)";
     }
-    else if (option === "Average Precipitation" || option === "Average Precipitation of Day") {
+    else if (option === "average-precipitation") {
         var z = z_array[4];
         var title = "Average Precipitation of Day (in inches)";
     };
 
     // console.log(z);
 
+    var annotations = [];
+    
+    for ( var i = 0; i < timeCategories.length; i++ ) {
+        for ( var j = 0; j < daysOfTheWeek.length; j++ ) {
+            var currentValue = z[i][j];
+            if (currentValue != 0.0) {
+            var textColor = 'white';
+            }
+            else {
+            var textColor = 'black';
+            }
+            var result = {
+            xref: 'x1',
+            yref: 'y1',
+            x: daysOfTheWeek[j],
+            y: timeCategories[i],
+            text: z[i][j],
+            font: {
+                family: 'Arial',
+                size: 12,
+                color: 'rgb(50, 171, 96)'
+            },
+            showarrow: false,
+            font: {
+                color: textColor
+            }
+            };
+            annotations.push(result);
+        }
+        }
+
     // Update object for new title
     var update = {
         title: title, // updates the title
+        annotations: annotations
     };
 
     // Log when the chart will be updated
-    // console.log("Updating chart...");
+    console.log("Updating chart...");
 
     // Restyle the vis
     Plotly.restyle("myDiv", "z", [z]);
@@ -459,7 +533,7 @@ d3.csv(accidents_url).then(function(accidents_data) {
     // cityNames.unshift("All Cities");
 
     // Create an array of month names for dropdown
-    var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    // var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     // GET RID OF DUPLICATES
     // Convert the array to a set
@@ -476,17 +550,17 @@ d3.csv(accidents_url).then(function(accidents_data) {
     });
 
     // For each month, append the name to a dropdown attribute
-    monthNames.forEach(month => {
-        //console.log(city);
-        var item = monthDropdown.append("option");
-        item.attr("class", "dropdown-item");
-        item.text(month);
-    });
+    // monthNames.forEach(month => {
+    //     //console.log(city);
+    //     var item = monthDropdown.append("option");
+    //     item.attr("class", "dropdown-item");
+    //     item.text(month);
+    // });
     
     // When RESET Button is clicked
     resetButton.on("click", function() {
         // RESET data & selected option
-        var option = "Accident Count";
+        var option = "accident-count";
 
         // Update the visualization (RESET)
         updatePlotly(accidents_data, option);
@@ -494,7 +568,7 @@ d3.csv(accidents_url).then(function(accidents_data) {
         // RESET titles
         // d3.select("#vis-title").text(option);
         d3.select(".btn-city").text("City");
-        d3.select(".btn-month").text("Month");
+        // d3.select(".btn-month").text("Month");
 
         // Reset table
         // Select the tbody in the html table
@@ -533,10 +607,8 @@ d3.csv(accidents_url).then(function(accidents_data) {
             // Change selected option
             var selection = "Accident Count";
 
-            selectionArray.splice(0, 1, selection);
+            selectionArray.splice(0, 1, selButtonID);
 
-            // Change title
-            d3.select("#vis-title").text(selection);
             // Change active button
             countButton.classed("active", true);
             visibilityButton.classed("active", false);
@@ -554,8 +626,7 @@ d3.csv(accidents_url).then(function(accidents_data) {
             var selection = "Average Visibility";
 
             selectionArray.splice(0, 1, selection);
-            // Change title
-            d3.select("#vis-title").text(selection);
+            
             // Change active button
             visibilityButton.classed("active", true);
             countButton.classed("active", false);
@@ -563,7 +634,7 @@ d3.csv(accidents_url).then(function(accidents_data) {
             windSpeedButton.classed("active", false);
             precipButton.classed("active", false);
 
-            updatePlotly(accidents_data, selection);
+            updatePlotly(accidents_data, selButtonID);
             
         }
         else if (selButtonID === "average-severity") {
@@ -572,8 +643,6 @@ d3.csv(accidents_url).then(function(accidents_data) {
             var selection = "Average Severity";
             selectionArray.splice(0, 1, selection);
 
-            // Change title
-            d3.select("#vis-title").text(selection);
             // Change active button
             severityButton.classed("active", true);
             countButton.classed("active", false);
@@ -581,7 +650,7 @@ d3.csv(accidents_url).then(function(accidents_data) {
             windSpeedButton.classed("active", false);
             precipButton.classed("active", false);
 
-            updatePlotly(accidents_data, selection);
+            updatePlotly(accidents_data, selButtonID);
         }
         else if (selButtonID === "average-windspeed") {
             // console.log("Button: ", selButtonID);
@@ -589,8 +658,6 @@ d3.csv(accidents_url).then(function(accidents_data) {
             var selection = "Average Wind Speed";
             selectionArray.splice(0, 1, selection);
 
-            // Change title
-            d3.select("#vis-title").text(selection);
             // Change active button
             windSpeedButton.classed("active", true);
             countButton.classed("active", false);
@@ -598,7 +665,7 @@ d3.csv(accidents_url).then(function(accidents_data) {
             visibilityButton.classed("active", false);
             precipButton.classed("active", false);
 
-            updatePlotly(accidents_data, selection);
+            updatePlotly(accidents_data, selButtonID);
             
         }
         else if (selButtonID === "average-precipitation") {
@@ -607,8 +674,6 @@ d3.csv(accidents_url).then(function(accidents_data) {
             var selection = "Average Precipitation";
             selectionArray.splice(0, 1, selection);
 
-            // Change title
-            d3.select("#vis-title").text(selection);
             // Change active button
             precipButton.classed("active", true);
             countButton.classed("active", false);
@@ -616,7 +681,7 @@ d3.csv(accidents_url).then(function(accidents_data) {
             windSpeedButton.classed("active", false);
             visibilityButton.classed("active", false);
 
-            updatePlotly(accidents_data, selection);
+            updatePlotly(accidents_data, selButtonID);
         };    
 
         // console.log("Option Selected:", selection);
@@ -626,91 +691,101 @@ d3.csv(accidents_url).then(function(accidents_data) {
             var selOption = d3.select(this).text();
             console.log("SELECTION: ", selOption);
 
-            // City
-            // If city element is undefined, add new option
-            if (filterArray[0] === undefined && selButtonValue === "City") {
-                filterArray.splice(0, 0, selOption);
+            // City filter
+            var filteredData = accidents_data.filter(element => element.city === selOption);
 
-                // Change text of button
-                selButton.text(selOption);
+            // Change text of button
+            selButton.text(selOption);
 
-                // If month element is undefined, filter from all data
-                if (filterArray.length === 1) {
-                    var filteredData = accidents_data.filter(element => element.city === selOption);
-                }
-                // If month element is defined, filter from month data
-                else if (filterArray.length === 2) 
-                {
-                    var filteredData = accidents_data.filter(element => moment(element.date).format('MMMM') === filterArray[1]).filter(element => element.city === filterArray[0]);
-                };
+            // // If city element is undefined, add new option
+            // if (filterArray[0] === undefined && selButtonValue === "City") {
+            //     filterArray.splice(0, 0, selOption);
+
+            //     // Change text of button
+            //     selButton.text(selOption);
+
+            //     // If month element is undefined, filter from all data
+            //     if (filterArray.length === 1) {
+            //         var filteredData = accidents_data.filter(element => element.city === selOption);
+            //     }
+            //     // If month element is defined, filter from month data
+            //     else if (filterArray.length === 2) 
+            //     {
+            //         var filteredData = accidents_data.filter(element => moment(element.date).format('MMMM') === filterArray[1]).filter(element => element.city === filterArray[0]);
+            //     };
                 
-            }
-            // If city element is defined, replace with new option
-            else if (filterArray[0] !== undefined && selButtonValue === "City") {
-                filterArray.splice(0, 1, selOption);
+            // }
+            // // If city element is defined, replace with new option
+            // else if (filterArray[0] !== undefined && selButtonValue === "City") {
+            //     filterArray.splice(0, 1, selOption);
 
-                // Change text of button
-                selButton.text(selOption);
+            //     // Change text of button
+            //     selButton.text(selOption);
 
-                // If month element is undefined, filter from all data
-                if (filterArray.length === 1) {
-                    var filteredData = accidents_data.filter(element => element.city === selOption);
-                }
-                // If month element is defined, filter from month data
-                else if (filterArray.length == 2) {
-                    var filteredData = accidents_data.filter(element => moment(element.date).format('MMMM') === filterArray[1]).filter(element => element.city === filterArray[0]);
-                };
+            //     // If month element is undefined, filter from all data
+            //     if (filterArray.length === 1) {
+            //         var filteredData = accidents_data.filter(element => element.city === selOption);
+            //     }
+            //     // If month element is defined, filter from month data
+            //     else if (filterArray.length == 2) {
+            //         var filteredData = accidents_data.filter(element => moment(element.date).format('MMMM') === filterArray[1]).filter(element => element.city === filterArray[0]);
+            //     };
                 
-            }
+            // }
             // Month
             // If month element is undefined, add new option
-            else if (filterArray[1] === undefined && selButtonValue === "Month") {
-                if (filterArray.length === 1) {
-                    filterArray.splice(1, 0, selOption);
-                }
+            // else if (filterArray[1] === undefined && selButtonValue === "Month") {
+            //     if (filterArray.length === 1) {
+            //         filterArray.splice(1, 0, selOption);
+            //     }
 
-                // Change text of button
-                selButton.text(selOption);
+            //     // Change text of button
+            //     selButton.text(selOption);
 
-                // If city element is undefined (array only has month), filter from all data
-                if (filterArray.length === 1) {
-                    var filteredData = accidents_data.filter(element => moment(element.date).format('MMMM') === selOption);
-                }
-                // If city element is defined, filter from city data
-                else if (filterArray.length === 2) {
-                    var filteredData = accidents_data.filter(element => moment(element.date).format('MMMM') === filterArray[1]).filter(element => element.city === filterArray[0]);
-                };
+            //     // If city element is undefined (array only has month), filter from all data
+            //     if (filterArray.length === 1) {
+            //         var filteredData = accidents_data.filter(element => moment(element.date).format('MMMM') === selOption);
+            //     }
+            //     // If city element is defined, filter from city data
+            //     else if (filterArray.length === 2) {
+            //         var filteredData = accidents_data.filter(element => moment(element.date).format('MMMM') === filterArray[1]).filter(element => element.city === filterArray[0]);
+            //     };
                 
-            }
-            // If month element is defined, replace with new option
-            else if (filterArray[1] !== undefined && selButtonValue === "Month") {
-                filterArray.splice(1, 1, selOption);
+            // }
+            // // If month element is defined, replace with new option
+            // else if (filterArray[1] !== undefined && selButtonValue === "Month") {
+            //     filterArray.splice(1, 1, selOption);
                 
-                // Change text of button
-                selButton.text(selOption);
+            //     // Change text of button
+            //     selButton.text(selOption);
 
-                // If city element is undefined, filter from all data
-                if (filterArray.length === 1) {
-                    var filteredData = accidents_data.filter(element => moment(element.date).format('MMMM') === selOption);
-                }
-                // If city element is defined, filter from city data
-                else if (filterArray.length === 2) {
-                    var filteredData = accidents_data.filter(element => moment(element.date).format('MMMM') === filterArray[1]).filter(element => element.city === filterArray[0]);
-                };
-            }
+            //     // If city element is undefined, filter from all data
+            //     if (filterArray.length === 1) {
+            //         var filteredData = accidents_data.filter(element => moment(element.date).format('MMMM') === selOption);
+            //     }
+            //     // If city element is defined, filter from city data
+            //     else if (filterArray.length === 2) {
+            //         var filteredData = accidents_data.filter(element => moment(element.date).format('MMMM') === filterArray[1]).filter(element => element.city === filterArray[0]);
+            //     };
+            // }
 
             // Define current data filter option
-            var selection = d3.select(".active").text();
+            var selection = d3.select(".active").attr("id");
         
+            console.log("Current Selection:", selection);
+
+            // Exporting filtered data to a list to have global access
+            filteredDataArray.splice(0, 1, filteredData);
+
+            // Update Chart & Create HTML Table
             updatePlotly(filteredData, selection);
             createTable(filteredData);
 
             // console.log(filteredData);
-            filteredDataArray.splice(0, 1, filteredData);
-            // console.log("Data Array", filteredDataArray[0]);
-            // console.log("Current Selection", selectionArray);
+
+            
         });
-            // console.log("Data Array", filteredDataArray[0]);
+
             var selection = selectionArray[0];
 
             // Check values
