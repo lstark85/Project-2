@@ -39,6 +39,7 @@ height: 100%;
     text-align: center;
 }
 
+/* Table Area */
 #table-area {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -48,39 +49,38 @@ height: 100%;
     
 }
 
-/* For media query */
-/* #table-area tbody td {
-    display: block;
-    text-align: center;
-} */
-
+/* Box for filters */
 #filter-box {
     margin-top: 10px;
     /* margin-bottom: 10px;
     margin-left: 10px;
     margin-right: 10px; */
-    background-color: #ADB2D3;
+    background-color: #FFEECF;
 }
 
+/* When button is selected */
 .btn-light:not(:disabled):not(.disabled).active, .btn-light:not(:disabled):not(.disabled):active, .show>.btn-light.dropdown-toggle {
     background-color: #e4e4ed8f;
     border-color: white;
 }
 
+/* Calculations Buttons */
 .btn-light {
     background-color: #E4E4ED;
     border-color: black;
+    margin-bottom: 20px;
 }
 
 /* Plot */
 #myDiv {
-    margin-top: 0px;
-    margin-bottom: 20px;
+    margin-top: 50px;
+    margin-bottom: 80px;
     margin-left: 30px;
     margin-right: 30px;
 
 }
 
+/* Options box */
 .options-box {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -88,6 +88,7 @@ height: 100%;
     margin-right: 10px;
 }
 
+/* Buttons */
 button {
     margin-top: 0px;
     margin-left: 10px;
@@ -95,17 +96,28 @@ button {
     margin-bottom: 0px;
 }
 
+/* Reset button */
 #reset-button {
-    display: inline-block;
-    float: right;
+    /* display: inline-block; */
+    /* float: left; */
     margin-top: 20px;
     margin-bottom: 20px;
     margin-right: 20px;
+    margin-left: 20px;
 
 }
 
+/* Subtitles for filter */
+#filter-subtitle {
+    color: black;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
 /* Jumbotron Title */
-.jumbotron {
+/* .jumbotron {
     padding: 5px;
     margin-bottom: 0px;
 
@@ -114,19 +126,14 @@ button {
 .jumbotron h1 {
     font-size: 40px;
     margin-top: 0px;
-}
-
-/* #filter-title {
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
 } */
 
-#filter-subtitle {
-    color: black;
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-}
+
+
+
+
+/* For media query */
+/* #table-area tbody td {
+    display: block;
+    text-align: center;
+} */
