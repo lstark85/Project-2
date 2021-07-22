@@ -41,8 +41,6 @@ height: 100%;
 
 /* Table Area */
 #table-area {
-    margin-top: 10px;
-    margin-bottom: 10px;
     margin-left: 10px;
     margin-right: 10px;
     /* display: inline-block; */
@@ -98,12 +96,12 @@ button {
 
 /* Reset button */
 #reset-button {
-    /* display: inline-block; */
-    /* float: left; */
-    margin-top: 20px;
+    display: inline-block;
+    float: left;
+    /* margin-top: 20px; */
     margin-bottom: 20px;
-    margin-right: 20px;
-    margin-left: 20px;
+    /* margin-right: 20px; */
+    /* margin-left: 20px;  */
 
 }
 
@@ -116,24 +114,25 @@ button {
     margin-bottom: 10px;
 }
 
-/* Jumbotron Title */
-/* .jumbotron {
+/* Jumbotron */
+.jumbotron {
     padding: 5px;
     margin-bottom: 0px;
 
 }
 
+/* Jumbotron Title */
 .jumbotron h1 {
     font-size: 40px;
-    margin-top: 0px;
-} */
-
-
-
+    margin-top: 10px;
+}
 
 
 /* For media query */
-/* #table-area tbody td {
+@media (max-width: 700px) {
+
+#table-area tbody td {
     display: block;
     text-align: center;
-} */
+}
+}

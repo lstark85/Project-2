@@ -378,8 +378,10 @@ function updatePlotly(data, option) {
 
     // console.log(z);
 
+    // Initialize annotation array for updating
     var annotations = [];
     
+    // Update annotations for new dataset
     for ( var i = 0; i < timeCategories.length; i++ ) {
         for ( var j = 0; j < daysOfTheWeek.length; j++ ) {
             var currentValue = z[i][j];
@@ -390,20 +392,20 @@ function updatePlotly(data, option) {
             var textColor = 'black';
             }
             var result = {
-            xref: 'x1',
-            yref: 'y1',
-            x: daysOfTheWeek[j],
-            y: timeCategories[i],
-            text: z[i][j],
-            font: {
-                family: 'Arial',
-                size: 12,
-                color: 'rgb(50, 171, 96)'
-            },
-            showarrow: false,
-            font: {
-                color: textColor
-            }
+                xref: 'x1',
+                yref: 'y1',
+                x: daysOfTheWeek[j],
+                y: timeCategories[i],
+                text: z[i][j],
+                font: {
+                    family: 'Arial',
+                    size: 12,
+                    color: 'rgb(50, 171, 96)'
+                },
+                showarrow: false,
+                font: {
+                    color: textColor
+                }
             };
             annotations.push(result);
         }
@@ -412,7 +414,7 @@ function updatePlotly(data, option) {
     // Update object for new title
     var update = {
         title: title, // updates the title
-        annotations: annotations
+        annotations: annotations 
     };
 
     // Log when the chart will be updated
@@ -445,7 +447,9 @@ function categorizeTime(time) {
 function createTable(filteredData) {
 
     var table_title = d3.select("#table-title");
+    var table_subtitle = d3.select("#table-subtitle");
     table_title.html("<h2>Accidents Report</h2>");
+    table_subtitle.html(`<h3>${filteredData[0].city}</h3>`);
     
     // Select the tbody in the html table
     var tbody = d3.select("tbody");
@@ -546,6 +550,7 @@ d3.csv(accidents_url).then(function(accidents_data) {
         //console.log(city);
         var item = cityDropdown.append("option");
         item.attr("class", "dropdown-item");
+        item.attr("id", city);
         item.text(city);
     });
 
@@ -562,12 +567,18 @@ d3.csv(accidents_url).then(function(accidents_data) {
         // RESET data & selected option
         var option = "accident-count";
 
+        // Reset filter array
+        filterArray = [];
+        filteredDataArray = [];
+        selectionArray = [];
+
         // Update the visualization (RESET)
         updatePlotly(accidents_data, option);
 
         // RESET titles
-        // d3.select("#vis-title").text(option);
         d3.select(".btn-city").text("City");
+        d3.select("#table-title").html("");
+        d3.select("#table-subtitle").html("");
         // d3.select(".btn-month").text("Month");
 
         // Reset table
@@ -583,10 +594,7 @@ d3.csv(accidents_url).then(function(accidents_data) {
         windSpeedButton.classed("active", false);
         precipButton.classed("active", false);
 
-        // Reset filter array
-        filterArray = [];
-        filteredDataArray = [];
-        selectionArray = [];
+        
     });
 
     // BUTTONS
@@ -607,7 +615,7 @@ d3.csv(accidents_url).then(function(accidents_data) {
             // Change selected option
             var selection = "Accident Count";
 
-            selectionArray.splice(0, 1, selButtonID);
+            selectionArray.splice(0, 1, selection);
 
             // Change active button
             countButton.classed("active", true);
@@ -616,7 +624,7 @@ d3.csv(accidents_url).then(function(accidents_data) {
             windSpeedButton.classed("active", false);
             precipButton.classed("active", false);
 
-            updatePlotly(accidents_data, selection);
+            updatePlotly(accidents_data, selButtonID);
 
             
         }
