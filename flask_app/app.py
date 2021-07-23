@@ -32,7 +32,7 @@ def weather():
     results = pd.read_sql('SELECT * FROM weather', engine)
 
     # Convert results to json
-    results_json = results.to_json(orient='records') 
+    results_json = results[['city', 'severity']].to_json(orient='records') 
 
     return results_json
 
