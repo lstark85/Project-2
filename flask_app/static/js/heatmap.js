@@ -59,13 +59,6 @@ function createObject(filteredData) {
     weekResults.afternoon = afternoon;
     weekResults.evening = evening;
 
-    // weekResults.early_morning = object;
-    // weekResults.morning = object;
-    // weekResults.afternoon = object;
-    // weekResults.evening = object;
-    
-    console.log(weekResults);
-
     // Loop through data
     for (var i = 0; i < filteredData.length; i++) {
 
@@ -221,25 +214,12 @@ function drawPlotly(data, option) {
     if (option === "Accident Count") {
         var z = z_array[0];
     }
-    else if (option === "Average Severity") {
-        var z = z_array[1];
-    }
-    else if (option === "Average Visibility") {
-        var z = z_array[2];
-    }
-    else if (option === "Average Wind Speed") {
-        var z = z_array[3];
-    }
-    else if (option === "Average Precipitation") {
-        var z = z_array[4];
-    };
-
-    // Define color scale
+    // Define color scale for the rest of the plots
     var colorscaleValue = [
         [0, '#feb24c'],
         [1, '#f03b20']
     ];
-
+    
     // DEFINE MAP OBJECTS FOR MAPPING
     // Heat map:
     var data = [
@@ -274,20 +254,20 @@ function drawPlotly(data, option) {
                 var textColor = 'black';
             }
             var result = {
-            xref: 'x1',
-            yref: 'y1',
-            x: daysOfTheWeek[j],
-            y: timeCategories[i],
-            text: z[i][j],
-            font: {
-                family: 'Arial',
-                size: 12,
-                color: 'rgb(50, 171, 96)'
-            },
-            showarrow: false,
-            font: {
-                color: textColor
-            }
+                xref: 'x1',
+                yref: 'y1',
+                x: daysOfTheWeek[j],
+                y: timeCategories[i],
+                text: z[i][j],
+                font: {
+                    family: 'Arial',
+                    size: 12,
+                    color: 'rgb(50, 171, 96)'
+                },
+                showarrow: false,
+                font: {
+                    color: textColor
+                }
             };
             layout.annotations.push(result);
         }
@@ -316,6 +296,12 @@ function updatePlotly(data, option) {
     var z_array = calculate(weekResults);
     // console.log(z_array);
 
+    // Define color scale for the rest of the plots
+    var colorscaleValue = [
+        [0, '#feb24c'],
+        [1, '#f03b20']
+    ];
+
     // Use selected option to define which dataset will be drawn
     if (option === "accident-count") {
         var z = z_array[0];
@@ -328,6 +314,12 @@ function updatePlotly(data, option) {
     else if (option === "average-visibility") {
         var z = z_array[2];
         var title = "Average Visibility of Day (in miles)";
+
+        // Define color scale for visibility (opposite)
+        var colorscaleValue = [
+            [0, '#f03b20'],
+            [1, '#feb24c']
+        ];
     }
     else if (option === "average-windspeed") {
         var z = z_array[3];
@@ -344,14 +336,14 @@ function updatePlotly(data, option) {
     var annotations = [];
     
     // Update annotations for new dataset
-    for ( var i = 0; i < timeCategories.length; i++ ) {
-        for ( var j = 0; j < daysOfTheWeek.length; j++ ) {
+    for (var i = 0; i < timeCategories.length; i++ ) {
+        for (var j = 0; j < daysOfTheWeek.length; j++ ) {
             var currentValue = z[i][j];
             if (currentValue != 0.0) {
-            var textColor = 'white';
+                var textColor = 'white';
             }
             else {
-            var textColor = 'black';
+                var textColor = 'black';
             }
             var result = {
                 xref: 'x1',
@@ -369,6 +361,7 @@ function updatePlotly(data, option) {
                     color: textColor
                 }
             };
+            // Push new annotations
             annotations.push(result);
         }
     };
@@ -378,8 +371,10 @@ function updatePlotly(data, option) {
         title: title,
         annotations: annotations 
     };
+
     // Restyle the vis
     Plotly.restyle("myDiv", "z", [z]);
+    Plotly.restyle("myDiv", "colorscale", [colorscaleValue]);
     Plotly.relayout("myDiv", update);
 
     // Log when the chart will be updated
@@ -415,7 +410,6 @@ function createTable(filteredData) {
     
     // Select the tbody in the html table
     var tbody = d3.select("tbody");
-    var thead = d3.select("thead");
 
     // Reset the html table
     tbody.html("");
@@ -566,8 +560,6 @@ d3.json(accidents_url).then(function(accidents_data) {
             precipButton.classed("active", false);
 
             updatePlotly(accidents_data, selButtonID);
-
-            
         }
         else if (selButtonID === "average-visibility") {
             // Change selected option
@@ -584,7 +576,6 @@ d3.json(accidents_url).then(function(accidents_data) {
             precipButton.classed("active", false);
 
             updatePlotly(accidents_data, selButtonID);
-            
         }
         else if (selButtonID === "average-severity") {
             // Change selected option
@@ -617,7 +608,6 @@ d3.json(accidents_url).then(function(accidents_data) {
             precipButton.classed("active", false);
 
             updatePlotly(accidents_data, selButtonID);
-            
         }
         else if (selButtonID === "average-precipitation") {
             // Change selected option
@@ -661,7 +651,7 @@ d3.json(accidents_url).then(function(accidents_data) {
             updatePlotly(filteredData, selection);
             createTable(filteredData);
         });
-
+            // Define the current selection
             var selection = selectionArray[0];
 
             // Check values
@@ -670,7 +660,9 @@ d3.json(accidents_url).then(function(accidents_data) {
             // console.log("Current Selection:", selection);
     });
 
+    // Set the first current option
     var current_option = "Accident Count";
+
     // Initialize the plot on the page
     drawPlotly(accidents_data, current_option);
 }); // End of pulling data
