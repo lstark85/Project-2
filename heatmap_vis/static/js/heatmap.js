@@ -1,6 +1,6 @@
 // Grab the data: will be flask api 
 var accidents_url = "../../data/ca_accidents.csv";
-var accidents_url = "/api/v1.0/accidents";
+// var accidents_url = "/api/v1.0/accidents";
 var weather_url = "../../data/ca_weather.csv";
 
 // ARRAYS FOR ITERATION (x & y)

@@ -22,22 +22,22 @@ def index():
         # f"/api/v1.0/weather<br/>"
         # f"/api/v1.0/accidents")
 
-    return(render_template("index.html"))
+    return(render_template("flask_index.html"))
 
 # Weather route
-@app.route("/api/v1.0/weather")
+@app.route("/weather")
 def weather():
     
     # Read in weather table
     results = pd.read_sql('SELECT * FROM weather', engine)
 
     # Convert results to json
-    results_json = results[['city', 'severity']].to_json(orient='records') 
+    results_json = results.to_json(orient='records') 
 
     return results_json
 
 # Accidents route
-@app.route('/api/v1.0/accidents')
+@app.route('/accidents')
 def accidents():
 
     # Read in accidents table
@@ -47,6 +47,37 @@ def accidents():
     results_json = results.to_json(orient='records') 
 
     return results_json
+
+@app.route('/accidents/sacramento')
+def accidents_smaller():
+
+    # Read in accidents table
+    results = pd.read_sql("SELECT * FROM accidents WHERE accidents.city = 'Sacramento'", engine)
+
+    # Convert results to json
+    results_json = results[['city', 'lat', 'lng', 'severity']].to_json(orient='records') 
+
+    return results_json
+
+# Jason's Map
+@app.route('/map')
+def map():
+    return render_template("map_index.html")
+
+# Linda's Radar
+@app.route('/radar')
+def radar():
+    return render_template("radar.html")
+
+# Vasu's Line Graph
+@app.route('/line-graph')
+def lineGraph():
+    return render_template("lineGraph.html")
+
+# Julia's Heatmap
+@app.route('/heatmap')
+def heatmap():
+    return render_template("heatmap.html")
 
 # Run app
 if __name__ == '__main__':
