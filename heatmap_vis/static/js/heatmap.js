@@ -1,7 +1,9 @@
 // Grab the data: will be flask api 
 var accidents_url = "../../data/ca_accidents.csv";
-// var accidents_url = "/api/v1.0/accidents";
 var weather_url = "../../data/ca_weather.csv";
+// var accidents_url = "/accidents";
+// var weather_url = "/weather";
+
 
 // ARRAYS FOR ITERATION (x & y)
 // Define a days of the week array
@@ -18,37 +20,37 @@ var filteredDataArray = [];
 function createObject(filteredData) {
 
     // Initialize objects for aggregating counts by weekday & time of day
-    var early_morning = {"Sunday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Monday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Tuesday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Wednesday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Thursday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Friday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Saturday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}}};
+    var early_morning = {"Sunday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Monday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Tuesday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Wednesday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Thursday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Friday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Saturday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}}};
     
-    var morning = {"Sunday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Monday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Tuesday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Wednesday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Thursday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Friday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Saturday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}}};
+    var morning = {"Sunday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Monday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Tuesday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Wednesday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Thursday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Friday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Saturday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}}};
 
-    var afternoon = {"Sunday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Monday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Tuesday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Wednesday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Thursday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Friday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Saturday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}}};
+    var afternoon = {"Sunday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Monday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Tuesday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Wednesday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Thursday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Friday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Saturday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}}};
     
-    var evening = {"Sunday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Monday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Tuesday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Wednesday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Thursday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Friday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}},
-    "Saturday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}, "weather_severity": {"count": 0, "Severe": 0, "Light": 0, "Heavy": 0, "Moderate": 0, "Other": 0, "UNK": 0}}};
+    var evening = {"Sunday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Monday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Tuesday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Wednesday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Thursday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Friday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}},
+    "Saturday": {"total": {"count": 0}, "visibility": {"count": 0, "sum": 0}, "severity": {"count": 0, "sum": 0}, "wind_speed": {"count": 0, "sum": 0}, "precipitation": {"count": 0, "sum": 0}}};
 
     // Define a days of the week object and add objects to it
     var weekResults = {};
@@ -56,11 +58,6 @@ function createObject(filteredData) {
     weekResults.morning = morning;
     weekResults.afternoon = afternoon;
     weekResults.evening = evening;
-
-    // Create arrays for dates, day_names, and times
-    // var dates = filteredData.map(data => data.date);
-    // var day_names = dates.map(date => moment(date).format('dddd'));
-    // var time = filteredData.map(data => data.time);
 
     // Loop through data
     for (var i = 0; i < filteredData.length; i++) {
@@ -71,99 +68,61 @@ function createObject(filteredData) {
         var wind_speed = filteredData[i].wind_speed;
         var precipitation = filteredData[i].precipitation;
 
-        // // Grab severity from weather data
-        // var weather_severity = weatherData[i].severity;
-
         // Get date & time variables (for x & y)
         var date = filteredData[i].date;
         var day_of_week = moment(date).format('dddd');
         var time = filteredData[i].time;
         var time_category = categorizeTime(time);
-
-        // // Grab date & time from weather data
-        // var date_weather = weatherData[i].date;
-        // var day_of_week_weather = moment(date_weather).format('dddd');
-        // var time_weather = weatherData[i].time;
-        // var time_category_weather = categorizeTime(time_weather);
     
-    // Loop to add to weekly object
-    // Looping through each time category (4)
-    for (var x = 0; x < timeCategories.length; x++) {
-        
-        if (time_category === timeCategories[x]) {
+        // Loop to add to weekly object
+        // Looping through each time category (4)
+        for (var x = 0; x < timeCategories.length; x++) {
+            
+            if (time_category === timeCategories[x]) {
 
-            // Add to days of the week object
-            // Looping through each day of the week (7)
-            for (var y = 0; y < daysOfTheWeek.length; y++) {
+                // Add to days of the week object
+                // Looping through each day of the week (7)
+                for (var y = 0; y < daysOfTheWeek.length; y++) {
 
-                if (day_of_week === daysOfTheWeek[y]) {
-                    // Define current day
-                    var this_day = daysOfTheWeek[y];
+                    if (day_of_week === daysOfTheWeek[y]) {
+                        // Define current day
+                        var this_day = daysOfTheWeek[y];
 
-                    // Add to day count (each time iterated)
-                    weekResults[time_category][this_day].total.count+=1
+                        // Add to day count (each time iterated)
+                        weekResults[time_category][this_day].total.count+=1
 
-                    // If visibility exists
-                    if (visibility) {
-                        // Add to visibility day count
-                        weekResults[time_category][this_day].visibility.sum+=visibility;
-                        weekResults[time_category][this_day].visibility.count+=1;
-                    }
+                        // If visibility exists
+                        if (visibility) {
+                            // Add to visibility day count
+                            weekResults[time_category][this_day].visibility.sum+=visibility;
+                            weekResults[time_category][this_day].visibility.count+=1;
+                        }
 
-                    // If severity exists
-                    if (severity) {
-                        // Add to severity day count
-                        weekResults[time_category][this_day].severity.sum+=severity;
-                        weekResults[time_category][this_day].severity.count+=1;
-                    }
+                        // If severity exists
+                        if (severity) {
+                            // Add to severity day count
+                            weekResults[time_category][this_day].severity.sum+=severity;
+                            weekResults[time_category][this_day].severity.count+=1;
+                        }
 
-                    // If wind speed exists
-                    if (wind_speed) {
-                        // Add to wind speed day count
-                        weekResults[time_category][this_day].wind_speed.sum+=wind_speed;
-                        weekResults[time_category][this_day].wind_speed.count+=1;
-                    }
+                        // If wind speed exists
+                        if (wind_speed) {
+                            // Add to wind speed day count
+                            weekResults[time_category][this_day].wind_speed.sum+=wind_speed;
+                            weekResults[time_category][this_day].wind_speed.count+=1;
+                        }
 
-                    // If precipitation
-                    if (precipitation) {
-                        // Add to precipitation day count
-                        weekResults[time_category][this_day].precipitation.sum+=precipitation;
-                        weekResults[time_category][this_day].precipitation.count+=1;
+                        // If precipitation
+                        if (precipitation) {
+                            // Add to precipitation day count
+                            weekResults[time_category][this_day].precipitation.sum+=precipitation;
+                            weekResults[time_category][this_day].precipitation.count+=1;
+                        }
                     }
                 }
-            }
-        };
-
-        // var weatherCategories = ["Light", "Severe", "Moderate", "Heavy", "Other", "UNK"];
-
-        // if (time_category_weather === timeCategories[x]) {
-
-        //     // Add to days of the week object
-        //     // Looping through each day of the week (7)
-        //     for (var y = 0; y < daysOfTheWeek.length; y++) {
-
-        //         if (day_of_week_weather === daysOfTheWeek[y]) {
-        //             // Define current day
-        //             var this_day = daysOfTheWeek[y];
-
-        //             // Add to day count (each time iterated)
-        //             weekResults[time_category_weather][this_day].total.count+=1
-
-        //             // If weather severity exists
-        //             if (weather_severity) {
-        //                 weekResults[time_category_weather][this_day].weather_severity.count+=1;
-
-        //                 for (var i = 0; i < weatherCategories.length; i++) {
-        //                     if (weather_severity === weatherCategories[i]) {
-        //                         weekResults[time_category_weather][this_day].weather_severity[weather_severity]+=1;
-        //                     }
-
-        //                 }
-                        
-        //             }
-                // }
-            }
+            };
         }
+    }
 
     // Print object
     // console.log("Aggregate Object:")
@@ -230,12 +189,9 @@ function calculate(object) {
                 };           
             };
         };
-
         // Array of arrays for "z" in vis
         z.push([early_morning_time, morning_time, afternoon_time, evening_time]);
-
     });
-
     // console.log("z", z);
     // Return array for vis
     return(z);
@@ -245,41 +201,25 @@ function calculate(object) {
 // Function to initialize the plotly vis
 function drawPlotly(data, option) {
     // Pull data from saved json file
-    d3.json("../../data/weekObject.json").then(function(data) {
-        var weekResults = data;
+    // d3.json("../../data/weekObject.json").then(function(data) {
+        // var weekResults = data;
     
-    // UNCOMMENT WHEN NEEDED:
-    // var weekResults = createObject(data);
+    // Builds the initial object for the plot
+    var weekResults = createObject(data);
 
     // Get z from calculate function for vis
     var z_array = calculate(weekResults, option);
 
+    // Define which array will be plotted
     if (option === "Accident Count") {
         var z = z_array[0];
     }
-    else if (option === "Average Severity") {
-        var z = z_array[1];
-    }
-    else if (option === "Average Visibility") {
-        var z = z_array[2];
-    }
-    else if (option === "Average Wind Speed") {
-        var z = z_array[3];
-    }
-    else if (option === "Average Precipitation") {
-        var z = z_array[4];
-    };
-
-    // var y = ['Early Morning', 'Morning', 'Afternoon', 'Evening'];
-
-    // Define color scale
+    // Define color scale for the rest of the plots
     var colorscaleValue = [
-        [0, '#7fcdbb'],
-        [1, '#2c7fb8']
-        // [2, '#7fcdbb']
+        [0, '#feb24c'],
+        [1, '#f03b20']
     ];
-    // ['#edf8b1','#7fcdbb','#2c7fb8']
-
+    
     // DEFINE MAP OBJECTS FOR MAPPING
     // Heat map:
     var data = [
@@ -303,94 +243,15 @@ function drawPlotly(data, option) {
                         }},
                     annotations: []}
 
+    // Loop to create annotations
     for ( var i = 0; i < timeCategories.length; i++ ) {
         for ( var j = 0; j < daysOfTheWeek.length; j++ ) {
             var currentValue = z[i][j];
             if (currentValue != 0.0) {
-            var textColor = 'white';
+                var textColor = 'white';
             }
             else {
-            var textColor = 'black';
-            }
-            var result = {
-            xref: 'x1',
-            yref: 'y1',
-            x: daysOfTheWeek[j],
-            y: timeCategories[i],
-            text: z[i][j],
-            font: {
-                family: 'Arial',
-                size: 12,
-                color: 'rgb(50, 171, 96)'
-            },
-            showarrow: false,
-            font: {
-                color: textColor
-            }
-            };
-            layout.annotations.push(result);
-        }
-        }
-
-        // Return new plot
-        return(Plotly.newPlot('myDiv', data, layout));
-    })
-};
-
-// STEP 4: called by anonymous functions (on click)
-// Function to update chart; (data: dataset, option: type of calculation selected)
-function updatePlotly(data, option) {
-    // Prevent page from refreshing
-    d3.event.preventDefault();
-
-    // If data is already filtered by city
-    if (filteredDataArray.length > 0) {
-        var data = filteredDataArray[0];
-    }
-
-    // Create object of values (with new data)
-    var weekResults = createObject(data);
-
-    // Calculate new aggregate functions
-    var z_array = calculate(weekResults);
-    // console.log(z_array);
-
-    // Use selected option to define which dataset will be drawn
-    if (option === "accident-count") {
-        var z = z_array[0];
-        var title = "Number of Accidents";
-    }
-    else if (option === "average-severity") {
-        var z = z_array[1];
-        var title = "Average Severity of Accidents";
-    }
-    else if (option === "average-visibility") {
-        var z = z_array[2];
-        var title = "Average Visibility of Day (in miles)";
-    }
-    else if (option === "average-windspeed") {
-        var z = z_array[3];
-        var title = "Average Wind Speed of Day (in mph)";
-    }
-    else if (option === "average-precipitation") {
-        var z = z_array[4];
-        var title = "Average Precipitation of Day (in inches)";
-    };
-
-    // console.log(z);
-
-    // Initialize annotation array for updating
-    var annotations = [];
-    
-    // Update annotations for new dataset
-    for ( var i = 0; i < timeCategories.length; i++ ) {
-        for ( var j = 0; j < daysOfTheWeek.length; j++ ) {
-            var currentValue = z[i][j];
-            if (currentValue != 0.0) {
-            var textColor = 'white';
-            }
-            else {
-            var textColor = 'black';
+                var textColor = 'black';
             }
             var result = {
                 xref: 'x1',
@@ -408,22 +269,116 @@ function updatePlotly(data, option) {
                     color: textColor
                 }
             };
+            layout.annotations.push(result);
+        }
+    };
+
+    // Return new plot
+    return(Plotly.newPlot('myDiv', data, layout));
+    // })
+};
+
+// STEP 4: called by anonymous functions (on click)
+// Function to update chart; (data: dataset, option: type of calculation selected)
+function updatePlotly(data, option) {
+    // Prevent page from refreshing
+    d3.event.preventDefault();
+
+    // If data is already filtered by city
+    if (filteredDataArray.length > 0) {
+        var data = filteredDataArray[0];
+    };
+
+    // Create object of values (with new data)
+    var weekResults = createObject(data);
+
+    // Calculate new aggregate functions
+    var z_array = calculate(weekResults);
+    // console.log(z_array);
+
+    // Define color scale for the rest of the plots
+    var colorscaleValue = [
+        [0, '#feb24c'],
+        [1, '#f03b20']
+    ];
+
+    // Use selected option to define which dataset will be drawn
+    if (option === "accident-count") {
+        var z = z_array[0];
+        var title = "Number of Accidents";
+    }
+    else if (option === "average-severity") {
+        var z = z_array[1];
+        var title = "Average Severity of Accidents";
+    }
+    else if (option === "average-visibility") {
+        var z = z_array[2];
+        var title = "Average Visibility of Day (in miles)";
+
+        // Define color scale for visibility (opposite)
+        var colorscaleValue = [
+            [0, '#f03b20'],
+            [1, '#feb24c']
+        ];
+    }
+    else if (option === "average-windspeed") {
+        var z = z_array[3];
+        var title = "Average Wind Speed of Day (in mph)";
+    }
+    else if (option === "average-precipitation") {
+        var z = z_array[4];
+        var title = "Average Precipitation of Day (in inches)";
+    };
+
+    // console.log(z);
+
+    // Initialize annotation array for updating
+    var annotations = [];
+    
+    // Update annotations for new dataset
+    for (var i = 0; i < timeCategories.length; i++ ) {
+        for (var j = 0; j < daysOfTheWeek.length; j++ ) {
+            var currentValue = z[i][j];
+            if (currentValue != 0.0) {
+                var textColor = 'white';
+            }
+            else {
+                var textColor = 'black';
+            }
+            var result = {
+                xref: 'x1',
+                yref: 'y1',
+                x: daysOfTheWeek[j],
+                y: timeCategories[i],
+                text: z[i][j],
+                font: {
+                    family: 'Arial',
+                    size: 12,
+                    color: 'rgb(50, 171, 96)'
+                },
+                showarrow: false,
+                font: {
+                    color: textColor
+                }
+            };
+            // Push new annotations
             annotations.push(result);
         }
-        }
+    };
 
-    // Update object for new title
+    // Update object for new title & annotations
     var update = {
-        title: title, // updates the title
+        title: title,
         annotations: annotations 
     };
 
-    // Log when the chart will be updated
-    console.log("Updating chart...");
-
     // Restyle the vis
     Plotly.restyle("myDiv", "z", [z]);
-    Plotly.relayout("myDiv", update)
+    Plotly.restyle("myDiv", "colorscale", [colorscaleValue]);
+    Plotly.relayout("myDiv", update);
+
+    // Log when the chart will be updated
+    // console.log("Updating chart...");
 };
 
 // Function to categorize time: called in createObject
@@ -447,6 +402,7 @@ function categorizeTime(time) {
 // Function to create table underneath plot
 function createTable(filteredData) {
 
+    // Select the table titles & add to them
     var table_title = d3.select("#table-title");
     var table_subtitle = d3.select("#table-subtitle");
     table_title.html("<h2>Accidents Report</h2>");
@@ -454,7 +410,6 @@ function createTable(filteredData) {
     
     // Select the tbody in the html table
     var tbody = d3.select("tbody");
-    var thead = d3.select("thead");
 
     // Reset the html table
     tbody.html("");
@@ -474,33 +429,31 @@ function createTable(filteredData) {
     // for each accident in the filtered data, append a row
     filteredData.forEach(accident => {
 
-    // Append a row to the tbody
-    var row = tbody.append("tr");
+        // Append a row to the tbody
+        var row = tbody.append("tr");
 
-    // Append a row for each data element
-    row_titles.forEach(element => {
-        var data_cell = row.append("td").text(accident[element]);
+        // Append a row for each data element
+        row_titles.forEach(element => {
+            if (element === "date") {
+                // Accident data's date
+                var date = moment(accident[element]).format('L');
+                var data_cell = row.append("td").text(date);
+            }
+            // If the row is not a date
+            else if (element !== "date") {
+                var data_cell = row.append("td").text(accident[element]);
+            };
+            
+        });
     });
-
-    })
-}
+};
 
 // LOADING DATA
 // Load the data: will be d3.json
-d3.csv(accidents_url).then(function(accidents_data) {
-
-    // d3.csv(weather_url).then(function(weather_data) {
-        // Print the object
-        // console.log(weather_data);
-        // Loop through each data point to convert
-        // weather_data.forEach(data => {
-        //     // Convert string variables to numbers
-        //     // data.severity = +data.severity;
-
-        // });
+d3.json(accidents_url).then(function(accidents_data) {
 
     // Print the object results
-    console.log(accidents_data);
+    // console.log(accidents_data);
 
     // Loop through each data point to convert
     accidents_data.forEach(data => {
@@ -508,14 +461,13 @@ d3.csv(accidents_url).then(function(accidents_data) {
         data.visibility = +data.visibility;
         data.severity = +data.severity;
         data.wind_speed = +data.wind_speed;
-        data.precipitation = +data.precipitation
+        data.precipitation = +data.precipitation;
 
     });
 
     // D3: select
     // Select dropdowns & reset button on page
     var cityDropdown = d3.select("#cityDropdown");
-    var monthDropdown = d3.select("#monthDropdown");
     var resetButton = d3.select("#reset-button");
 
     // Type of Calculation Buttons
@@ -530,15 +482,8 @@ d3.csv(accidents_url).then(function(accidents_data) {
     var cityNames = accidents_data.map(data => data.city);
     // Remove blank city name
     cityNames = cityNames.filter(d => d !== "");
-    // // Push an "all cities" option
-    // cityNames.push("All Cities");
     // Sort the array
     cityNames.sort();
-    // // Move "all cities" to the front
-    // cityNames.unshift("All Cities");
-
-    // Create an array of month names for dropdown
-    // var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     // GET RID OF DUPLICATES
     // Convert the array to a set
@@ -554,14 +499,6 @@ d3.csv(accidents_url).then(function(accidents_data) {
         item.attr("id", city);
         item.text(city);
     });
-
-    // For each month, append the name to a dropdown attribute
-    // monthNames.forEach(month => {
-    //     //console.log(city);
-    //     var item = monthDropdown.append("option");
-    //     item.attr("class", "dropdown-item");
-    //     item.text(month);
-    // });
     
     // When RESET Button is clicked
     resetButton.on("click", function() {
@@ -580,7 +517,6 @@ d3.csv(accidents_url).then(function(accidents_data) {
         d3.select(".btn-city").text("City");
         d3.select("#table-title").html("");
         d3.select("#table-subtitle").html("");
-        // d3.select(".btn-month").text("Month");
 
         // Reset table
         // Select the tbody in the html table
@@ -594,8 +530,6 @@ d3.csv(accidents_url).then(function(accidents_data) {
         severityButton.classed("active", false);
         windSpeedButton.classed("active", false);
         precipButton.classed("active", false);
-
-        
     });
 
     // BUTTONS
@@ -606,16 +540,16 @@ d3.csv(accidents_url).then(function(accidents_data) {
         var selButton = d3.select(this);
         var selButtonID = selButton.attr("id");
 
+        // If dropdown is clicked
         if (selButtonID === "dropdownMenuButton") {
             var selButtonValue = selButton.attr("value");
-            // console.log("Button: ", selButtonValue)
         }
         // Set elements on page to match the chosen selection
         else if (selButtonID === "accident-count") {
-            // console.log("Button: ", selButtonID);
             // Change selected option
             var selection = "Accident Count";
 
+            // Add to value to array
             selectionArray.splice(0, 1, selection);
 
             // Change active button
@@ -626,14 +560,12 @@ d3.csv(accidents_url).then(function(accidents_data) {
             precipButton.classed("active", false);
 
             updatePlotly(accidents_data, selButtonID);
-
-            
         }
         else if (selButtonID === "average-visibility") {
-            // console.log("Button: ", selButtonID);
             // Change selected option
             var selection = "Average Visibility";
 
+            // Add to value to array
             selectionArray.splice(0, 1, selection);
             
             // Change active button
@@ -644,12 +576,12 @@ d3.csv(accidents_url).then(function(accidents_data) {
             precipButton.classed("active", false);
 
             updatePlotly(accidents_data, selButtonID);
-            
         }
         else if (selButtonID === "average-severity") {
-            // console.log("Button: ", selButtonID);
             // Change selected option
             var selection = "Average Severity";
+
+            // Add to value to array
             selectionArray.splice(0, 1, selection);
 
             // Change active button
@@ -662,9 +594,10 @@ d3.csv(accidents_url).then(function(accidents_data) {
             updatePlotly(accidents_data, selButtonID);
         }
         else if (selButtonID === "average-windspeed") {
-            // console.log("Button: ", selButtonID);
             // Change selected option
             var selection = "Average Wind Speed";
+
+            // Add to value to array
             selectionArray.splice(0, 1, selection);
 
             // Change active button
@@ -675,12 +608,12 @@ d3.csv(accidents_url).then(function(accidents_data) {
             precipButton.classed("active", false);
 
             updatePlotly(accidents_data, selButtonID);
-            
         }
         else if (selButtonID === "average-precipitation") {
-            // console.log("Button: ", selButtonID);
             // Change selected option
             var selection = "Average Precipitation";
+
+            // Add to value to array
             selectionArray.splice(0, 1, selection);
 
             // Change active button
@@ -700,88 +633,16 @@ d3.csv(accidents_url).then(function(accidents_data) {
             var selOption = d3.select(this).text();
             console.log("SELECTION: ", selOption);
 
-            // City filter
-            var filteredData = accidents_data.filter(element => element.city === selOption);
+            // City filter: for accidents
+            var filteredData = accidents_data.filter(element => element.city === selOption); 
 
             // Change text of button
             selButton.text(selOption);
 
-            // // If city element is undefined, add new option
-            // if (filterArray[0] === undefined && selButtonValue === "City") {
-            //     filterArray.splice(0, 0, selOption);
-
-            //     // Change text of button
-            //     selButton.text(selOption);
-
-            //     // If month element is undefined, filter from all data
-            //     if (filterArray.length === 1) {
-            //         var filteredData = accidents_data.filter(element => element.city === selOption);
-            //     }
-            //     // If month element is defined, filter from month data
-            //     else if (filterArray.length === 2) 
-            //     {
-            //         var filteredData = accidents_data.filter(element => moment(element.date).format('MMMM') === filterArray[1]).filter(element => element.city === filterArray[0]);
-            //     };
-                
-            // }
-            // // If city element is defined, replace with new option
-            // else if (filterArray[0] !== undefined && selButtonValue === "City") {
-            //     filterArray.splice(0, 1, selOption);
-
-            //     // Change text of button
-            //     selButton.text(selOption);
-
-            //     // If month element is undefined, filter from all data
-            //     if (filterArray.length === 1) {
-            //         var filteredData = accidents_data.filter(element => element.city === selOption);
-            //     }
-            //     // If month element is defined, filter from month data
-            //     else if (filterArray.length == 2) {
-            //         var filteredData = accidents_data.filter(element => moment(element.date).format('MMMM') === filterArray[1]).filter(element => element.city === filterArray[0]);
-            //     };
-                
-            // }
-            // Month
-            // If month element is undefined, add new option
-            // else if (filterArray[1] === undefined && selButtonValue === "Month") {
-            //     if (filterArray.length === 1) {
-            //         filterArray.splice(1, 0, selOption);
-            //     }
-
-            //     // Change text of button
-            //     selButton.text(selOption);
-
-            //     // If city element is undefined (array only has month), filter from all data
-            //     if (filterArray.length === 1) {
-            //         var filteredData = accidents_data.filter(element => moment(element.date).format('MMMM') === selOption);
-            //     }
-            //     // If city element is defined, filter from city data
-            //     else if (filterArray.length === 2) {
-            //         var filteredData = accidents_data.filter(element => moment(element.date).format('MMMM') === filterArray[1]).filter(element => element.city === filterArray[0]);
-            //     };
-                
-            // }
-            // // If month element is defined, replace with new option
-            // else if (filterArray[1] !== undefined && selButtonValue === "Month") {
-            //     filterArray.splice(1, 1, selOption);
-                
-            //     // Change text of button
-            //     selButton.text(selOption);
-
-            //     // If city element is undefined, filter from all data
-            //     if (filterArray.length === 1) {
-            //         var filteredData = accidents_data.filter(element => moment(element.date).format('MMMM') === selOption);
-            //     }
-            //     // If city element is defined, filter from city data
-            //     else if (filterArray.length === 2) {
-            //         var filteredData = accidents_data.filter(element => moment(element.date).format('MMMM') === filterArray[1]).filter(element => element.city === filterArray[0]);
-            //     };
-            // }
-
             // Define current data filter option
             var selection = d3.select(".active").attr("id");
         
-            console.log("Current Selection:", selection);
+            // console.log("Current Selection:", selection);
 
             // Exporting filtered data to a list to have global access
             filteredDataArray.splice(0, 1, filteredData);
@@ -789,29 +650,19 @@ d3.csv(accidents_url).then(function(accidents_data) {
             // Update Chart & Create HTML Table
             updatePlotly(filteredData, selection);
             createTable(filteredData);
-
-            // console.log(filteredData);
-
-            
         });
-
+            // Define the current selection
             var selection = selectionArray[0];
 
             // Check values
-            // console.log("Filters", filterArray);
             // console.log("Filtered Data: ");
             // console.log(filteredData);
-            // console.log("Current Option:", current_option); // change to selection
             // console.log("Current Selection:", selection);
-        
-        // });
     });
 
+    // Set the first current option
     var current_option = "Accident Count";
+
     // Initialize the plot on the page
     drawPlotly(accidents_data, current_option);
-
-// });
-
-
 }); // End of pulling data

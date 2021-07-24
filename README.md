@@ -26,6 +26,11 @@
 - ***templates***: all templates (html files) are contained in here for each visualization
 - ***HOW TO RUN***: Navigate to this folder and run: "python app.py" in your local terminal
 
+**Various Folders**: Folders containing working code for visualizations - full page is located in flask app
+- barchart_vis
+- chart.js
+- heatmap_vis
+- map_vis
 
 *Acknowledgements for Datasets:*
 - Moosavi, Sobhan, Mohammad Hossein Samavatian, Arnab Nandi, Srinivasan Parthasarathy, and Rajiv Ramnath. “Short and Long-term Pattern Discovery Over Large-Scale Geo-Spatiotemporal Data.” In Proceedings of the 25th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining, ACM, 2019.
