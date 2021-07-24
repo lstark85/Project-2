@@ -16,39 +16,63 @@
             <div class="row">
                 <div class="col-md-12 jumbotron">
                     <h1>Welcome to the Weather & Accidents API!</h1>
-                    <h2>Available Routes:</h2>
+                    <h3>Available Routes:</h3>
                 </div>
             </div>
 
+            <!-- Box for Data Buttons -->
             <div id="data-box">
-            <!-- Endpoints -->
-            <div class="row">
-                <!-- Data Box -->
-                <div class="col-md-12">
-                    <h2>Data:</h2>
+                <!-- Endpoints -->
+                <div class="row">
+                    <!-- Data Box -->
+                    <div class="col-md-12">
+                        <h2>Data:</h2>
+                        <hr/>
+                    </div>
                 </div>
-            </div>
+                <!-- Row for Buttons -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <a class="btn btn-primary" href="/weather" role="button">Weather</a>
+                        <a class="btn btn-primary" href="/accidents" role="button">Accidents</a>
+                        <hr/>
+                    </div>
+                </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <a class="btn btn-primary" href="/weather" role="button">Weather</a>
-                    <a class="btn btn-primary" href="/accidents" role="button">Accidents</a>
-                </div>
-            </div>
+
             </div>
                 <div class="row">
                     <div class="col-md-12">
-                    <h2>Graphs:</h2>
+                        <h2>Visualizations:</h2>
+                        <hr/>
+                        <div class="vis-sub-title">
+                            <h3>Traffic Accidents vs. Weather Trends in California in 2019</h3>
+                        </div>
+                        
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                    <a class="btn btn-primary" href="/map" role="button">Map</a>
-                    <a class="btn btn-primary" href="/radar" role="button">Radar</a>
-                    <a class="btn btn-primary" href="/bar-graph" role="button">Bar Graph</a>
-                    <a class="btn btn-primary" href="/heatmap" role="button">Heatmap</a>
+                    <!-- <div class="col-md-12"> -->
+                        <!-- <a class="btn btn-primary" href="/map" role="button">Map</a>
+                        <a class="btn btn-primary" href="/radar" role="button">Radar</a>
+                        <a class="btn btn-primary" href="/bar-graph" role="button">Bar Graph</a>
+                        <a class="btn btn-primary" href="/heatmap" role="button">Heatmap</a> -->
+                    <div class="col-md-6">
+                        <a href="/map"><img class="zoom" src="../static/images/map.png" alt="Map" id="api-image"/></a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="/radar"><img class="zoom" src="../static/images/radar.png" alt="Radar" id="api-image"/></a>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <a href="/bar-chart"><img class="zoom" src="../static/images/bar_chart.png" alt="Bar Chart" id="api-image"/></a>
+                    </div>
+                    <div class="col-md-7">
+                        <a href="/heatmap"><img class="zoom" src="../static/images/heatmap.png" alt="Heatmap" id="api-image"/></a>
+                    </div>
+                </div>
+                
         
 
         
