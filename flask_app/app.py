@@ -49,30 +49,30 @@ def accidents():
     return results_json
 
 @app.route('/accidents/sacramento')
-def accidents_smaller():
+def accidents_sacramento():
 
     # Read in accidents table
     results = pd.read_sql("SELECT * FROM accidents WHERE accidents.city = 'Sacramento'", engine)
 
     # Convert results to json
-    results_json = results[['city', 'lat', 'lng', 'severity']].to_json(orient='records') 
+    results_json = results.to_json(orient='records') 
 
     return results_json
 
 # Jason's Map
 @app.route('/map')
 def map():
-    return render_template("map_index.html")
+    return render_template("marker.html")
 
 # Linda's Radar
 @app.route('/radar')
 def radar():
     return render_template("radar.html")
 
-# Vasu's Line Graph
-@app.route('/line-graph')
-def lineGraph():
-    return render_template("lineGraph.html")
+# Vasu's Bar Chart
+@app.route('/bar-chart')
+def barGraph():
+    return render_template("bar_index.html")
 
 # Julia's Heatmap
 @app.route('/heatmap')
