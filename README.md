@@ -14,10 +14,12 @@
 - ca_accidents.csv
 - ca_weather.csv
 
-**project_data_copy.ipynb**: 
-- Jupyter Notebook with the ETL (Extracting, Transforming, & Loading) Process
+**resources**: this folder contains the SQL schemas used to initialize the SQL database in PostgreSQL
 
-**resources**: this folder contains the SQL schemas used to initialize the SQL database
+**ETL.ipynb**: 
+- Jupyter Notebook with the ETL (Extracting, Transforming, & Loading) Process
+- Run this notebook to add data to the SQL database in PostgreSQL
+- A config.py file will need to be created with the database variables used in both this notebook & the following flask app
 
 **flask_app**: this folder contains the main flask app used to run the visualizations & call the API data on your local machine
 - ***static***: *css*, *js*: (all js files are contained in here for each visualization)
