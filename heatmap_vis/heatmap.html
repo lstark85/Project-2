@@ -12,12 +12,10 @@
     <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="crossorigin="" /> -->
     <script src="https://cdn.plot.ly/plotly-2.2.0.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="./static/css/style_heatmap.css">
 </head>
 
 <body>
-
-    <!-- <div id="map"></div> -->
 
     <!-- Title: if need -->
     <div class="container titles">
@@ -40,9 +38,6 @@
             <div class="col-md-12 text-center">
                 <h4 id="filter-subtitle">Filters</h4>
             </div>
-            <!-- <div class="col-md-10 text-center">
-                <h4 id="filter-subtitle">Select a Calculation</h4>
-            </div> -->
         </div>
                 
         <!-- Row 1 -->
@@ -50,56 +45,43 @@
             <div class="col-md-2">
                 <!--City Dropdown-->
                 <div class="dropdown dropright text-center">
-                    <button class="btn btn-secondary dropdown-toggle btn-city btn-action" type="button" value="City" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">City</button>
+                    <button class="btn btn-secondary dropdown-toggle btn-city btn-action btn-responsive" type="button" value="City" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">City</button>
                     
                     <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdownMenuButton" id="cityDropdown">
                     </div>
                 </div>
-                <!--Month Dropdown-->
-                    <!-- <div class="dropdown dropright text-center">
-                        <button class="btn btn-secondary dropdown-toggle btn-month btn-action" type="button" value="Month" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Month</button>
-                        <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdownMenuButton" id="monthDropdown">
-                        </div>
-                    </div> -->
             </div>
         
 
             <!-- Button Calculation Options -->
             <div class="col-md-2">
-                <div class="form-check text-center">
-                    <button type="button" class="btn btn-light btn-action active" id="accident-count">Accidents</button>
+                <div class="text-center">
+                    <button type="button" class="btn btn-light btn-action btn-responsive active" id="accident-count">Accidents</button>
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="form-check text-center">
-                    <button type="button" class="btn btn-light btn-action" id="average-severity">Severity</button>
+                <div class="text-center">
+                    <button type="button" class="btn btn-light btn-action btn-responsive" id="average-severity">Severity</button>
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="form-check text-center">
-                    <button type="button" class="btn btn-light btn-action " id="average-visibility">Visibility</button>
+                <div class="text-center">
+                    <button type="button" class="btn btn-light btn-action btn-responsive" id="average-visibility">Visibility</button>
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="form-check text-center">
-                    <button type="button" class="btn btn-light btn-action" id="average-windspeed">Wind Speed</button>
+                <div class="text-center">
+                    <button type="button" class="btn btn-light btn-action btn-responsive" id="average-windspeed">Wind Speed</button>
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="form-check text-center">
-                    <button type="button" class="btn btn-light btn-action" id="average-precipitation">Precipitation</button>
+                <div class="text-center">
+                    <button type="button" class="btn btn-light btn-action btn-responsive" id="average-precipitation">Precipitation</button>
                     
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- <div class="row">
-        <div class="col-md-2 text-center">
-            <!-- Reset Button  -->
-            <!-- <button type="button" class="btn btn-dark" id="reset-button">Reset</button>
-        </div>
-    </div> -->
     
     <!-- Plot -->
     <div id="myDiv" class="responsive-plot"></div>
@@ -110,9 +92,6 @@
         <div class="col-md-12 text-center" id="table-title">
         </div>
         <div class ="col-md-12 text-center" id="table-subtitle"></div>
-        <!-- <div class="col-md-12 text-center">
-
-        </div> -->
     </div>
 
     <!--Table of Data-->
@@ -136,16 +115,16 @@
         </div>
 
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <!-- <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script> -->
     <!-- <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script> -->
     
     <!-- Time JS - Moment.js -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
     <!-- Json Object for initializing plot -->
-    <script src="data/weekObject.json"></script>
+    <!-- <script src="../data/weekObject.json"></script> -->
     <!-- JS file with code for loading the heatmap -->
-    <script type="text/javascript" src="static/js/heatmap.js"></script>
+    <script type="text/javascript" src="./static/js/heatmap.js"></script>
     
 </body>
 </html>

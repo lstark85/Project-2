@@ -1,6 +1,6 @@
 // Grab the data: will be flask api 
-var accidents_url = "../../data/ca_accidents.csv";
-// var accidents_url = "/accidents";
+
+var accidents_url = "/accidents";
 // var weather_url = "../../data/ca_weather.csv";
 // STEP 1: called by draw plotly & update plotly
 // FUNCTION: CREATE OBJECT TO USE
@@ -138,7 +138,7 @@ else if (weather_condition === "Snow") {
 
 
 
-d3.csv(accidents_url).then(function(filteredData) {
+d3.json(accidents_url).then(function(filteredData) {
 
     // Loop through each data point to convert
     filteredData.forEach(data => {

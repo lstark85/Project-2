@@ -20,8 +20,8 @@ function createMap(carAcc) {
 
     // Create the map object with options
     var map = L.map("map-id", {
-        center: [38.5, -122],
-        zoom: 15,
+        center: [38.564926, -121.492526],
+        zoom: 11,
         layers: [lightmap, carAcc]
     });
 

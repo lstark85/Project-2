@@ -14,16 +14,23 @@
 - ca_accidents.csv
 - ca_weather.csv
 
-**project_data_copy.ipynb**: 
-- Jupyter Notebook with the ETL (Extracting, Transforming, & Loading) Process
+**resources**: this folder contains the SQL schemas used to initialize the SQL database in PostgreSQL
 
-**resources**: this folder contains the SQL schemas used to initialize the SQL database
+**ETL.ipynb**: 
+- Jupyter Notebook with the ETL (Extracting, Transforming, & Loading) Process
+- Run this notebook to add data to the SQL database in PostgreSQL
+- A config.py file will need to be created with the database variables used in both this notebook & the following flask app
 
 **flask_app**: this folder contains the main flask app used to run the visualizations & call the API data on your local machine
 - ***static***: *css*, *js*: (all js files are contained in here for each visualization)
 - ***templates***: all templates (html files) are contained in here for each visualization
 - ***HOW TO RUN***: Navigate to this folder and run: "python app.py" in your local terminal
 
+**Various Folders**: Folders containing working code for visualizations - full page is located in flask app
+- barchart_vis
+- chart.js
+- heatmap_vis
+- map_vis
 
 *Acknowledgements for Datasets:*
 - Moosavi, Sobhan, Mohammad Hossein Samavatian, Arnab Nandi, Srinivasan Parthasarathy, and Rajiv Ramnath. “Short and Long-term Pattern Discovery Over Large-Scale Geo-Spatiotemporal Data.” In Proceedings of the 25th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining, ACM, 2019.

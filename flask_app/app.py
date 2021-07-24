@@ -67,7 +67,7 @@ def map():
 # Linda's Radar
 @app.route('/radar')
 def radar():
-    return render_template("radar.html")
+    return render_template("radar_chart.html")
 
 # Vasu's Bar Chart
 @app.route('/bar-chart')
