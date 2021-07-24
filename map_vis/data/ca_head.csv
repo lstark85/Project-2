@@ -1,0 +1,101 @@
+,Unnamed: 0,date,id,time,lat,lng,description,severity,city,state,visibility,wind_speed,precipitation,weather_condition,year
+0,0,2019-01-01,A-1762063,05:58:45,34.229301,-118.259348,At Pennsylvania Ave - Accident.,2,La Crescenta,CA,10.0,3.5,,Clear,2019
+1,1,2019-01-01,A-1838793,08:15:05,41.730831,-123.432533,Accident on CA-96 at River Trl.,2,Happy Camp,CA,10.0,4.6,,Clear,2019
+2,2,2019-01-01,A-1773578,04:46:00,38.66107,-121.361125,Between I-80 and Hillsdale Blvd - Accident.,2,Sacramento,CA,10.0,9.2,,Clear,2019
+3,3,2019-01-01,A-1238846,08:12:27,33.996441,-117.364876,Lane blocked due to accident on CA-60 Eastbound at Exits 34B 52B 53A 53B CA-91.,2,Riverside,CA,10.0,13.8,,Clear,2019
+4,4,2019-01-01,A-687135,07:05:30,34.08562,-118.21673,Between Westbound I-5 Acc and Avenue 43 - Accident.,2,Los Angeles,CA,10.0,,,Clear,2019
+5,5,2019-01-01,A-166460,15:13:46,34.06092,-118.25032,Ramp to US-101/Hollywood Fwy - Accident.,3,Los Angeles,CA,10.0,4.6,,Clear,2019
+6,6,2019-01-01,A-2165483,03:32:16,34.419022,-118.43678999999999,#3 #4 lane blocked due to accident on CA-14 Northbound after Lost Canyon Rd. SigAlert issued.,2,Canyon Country,CA,10.0,17.0,0.0,Fair,2019
+7,7,2019-01-01,A-642304,09:04:49,33.870613,-117.744522,#3 #4 lane blocked due to accident on CA-91 Eastbound after Exit 39 Weir Canyon Rd.,2,Anaheim,CA,10.0,13.8,,,2019
+8,8,2019-01-01,A-260252,12:54:15,34.069959999999995,-118.2617,At Glendale Blvd/Union Ave - Accident. Right lane blocked.,2,Los Angeles,CA,10.0,,,Clear,2019
+9,9,2019-01-01,A-1304425,06:10:45,34.16881,-117.45702,At Duncan Canyon Rd/Exit 118 - Accident.,2,Fontana,CA,10.0,17.3,,Clear,2019
+10,10,2019-01-01,A-1511042,09:42:50,35.748768,-120.700195,Accident on US-101 Northbound at Exits 239 239B 10th St.,2,San Miguel,CA,10.0,,,Clear,2019
+11,11,2019-01-01,A-1479880,07:50:30,34.052609999999994,-118.22646999999999,Between US-101/Santa Ana Fwy/Mission Rd and I-5/Golden State Fwy/State St - Accident.,2,Los Angeles,CA,10.0,,,Clear,2019
+12,12,2019-01-01,A-2345810,15:31:00,34.025490000000005,-118.46598,At Cloverfield Blvd/Exit 1C - Accident. Lane blocked.,2,Santa Monica,CA,10.0,13.8,,Clear,2019
+13,13,2019-01-01,A-585369,10:17:30,37.79443,-122.20629,At 35th Ave - Accident.,2,Oakland,CA,10.0,11.5,,Scattered Clouds,2019
+14,14,2019-01-01,A-2581577,12:34:16,35.107368,-120.62336699999999,Accident on Pier Ave at CA-1 Pacific Blvd.,2,Oceano,CA,10.0,4.6,,Clear,2019
+15,15,2019-01-01,A-1548702,13:16:46,34.0051,-117.39505,At Rubidoux Blvd - Accident. Three lanes blocked.,3,Riverside,CA,10.0,11.5,,Clear,2019
+16,16,2019-01-01,A-2083425,07:16:17,40.43483,-122.285843,Accident on I-5 Northbound at I-5 Exits 667 667B / Deschutes Rd.,3,Anderson,CA,10.0,21.9,,Clear,2019
+17,17,2019-01-01,A-1887599,00:00:50,37.742043,-121.56673400000001,Accident on I-205 Eastbound at I-580.,3,Tracy,CA,10.0,3.5,,Clear,2019
+18,18,2019-01-01,A-847804,09:10:22,36.678108,-119.71785,Accident on Central Ave at Peach Ave.,2,Fresno,CA,2.5,3.5,,Mostly Cloudy,2019
+19,19,2019-01-01,A-1508159,21:34:00,37.299228,-121.874769,At CR-G8/Almaden Expy/Exit 3B - Accident.,2,San Jose,CA,10.0,3.5,,Partly Cloudy,2019
+20,20,2019-01-01,A-2286892,20:29:41,37.531162,-121.941162,Right hand shoulder blocked due to accident on I-680 Northbound at Exit 14 Auto Mall Pkwy.,3,Fremont,CA,10.0,,,Clear,2019
+21,21,2019-01-01,A-1173444,05:48:15,34.1306,-117.50315,At Baseline Rd - Accident.,3,Fontana,CA,10.0,17.3,,Clear,2019
+22,22,2019-01-01,A-649565,08:23:18,36.892651,-121.604599,Accident on Anzar Rd at Forest Rd.,2,San Juan Bautista,CA,10.0,,,Clear,2019
+23,23,2019-01-01,A-2283726,03:39:15,33.7745,-118.01258,Closed between Garden Grove Blvd/Knott St and Valley View St/Exit 5 - Road closed due to accident.,4,Garden Grove,CA,10.0,19.6,,Clear,2019
+24,24,2019-01-01,A-2708540,09:27:46,38.427997999999995,-121.48728200000001,Accident on I-5 Southbound before Exit 508 Laguna Blvd.,3,Elk Grove,CA,10.0,12.7,,Clear,2019
+25,25,2019-01-01,A-2729801,13:59:26,38.594784000000004,-122.85282099999999,Accident on US-101 Northbound at US-101 Exit 502 / Healdsburg Ave.,2,Healdsburg,CA,10.0,4.6,,Scattered Clouds,2019
+26,26,2019-01-01,A-724161,13:29:30,33.927889,-118.216379,At Wilmington Ave - Accident. Lane blocked.,2,Lynwood,CA,10.0,4.6,,Clear,2019
+27,27,2019-01-01,A-2512902,17:21:15,38.562540999999996,-121.345247,At Watt Ave - Accident. Right lane blocked.,2,Sacramento,CA,10.0,8.1,,Partly Cloudy,2019
+28,28,2019-01-01,A-1508121,05:16:54,37.943527,-122.51536599999999,#1 lane blocked due to accident on US-101 Southbound near Exits 450A 450B Sir Francis Drake Blvd.,2,Larkspur,CA,10.0,10.4,,Clear,2019
+29,29,2019-01-01,A-414637,16:12:16,38.048586,-122.233149,At Pomona St - Accident. Two lanes blocked.,3,Crockett,CA,10.0,6.9,,Clear,2019
+30,30,2019-01-01,A-2861430,16:31:22,33.976688,-118.252068,Accident on 70th St at Hooper Ave.,2,Los Angeles,CA,10.0,3.5,,Clear,2019
+31,31,2019-01-01,A-1966416,12:17:58,37.367519,-122.404831,Accident on CA-1 Cabrillo Hwy at Triple D Ranch Rd.,2,Half Moon Bay,CA,10.0,13.8,,Clear,2019
+32,32,2019-01-01,A-881651,09:47:43,37.60931,-120.920502,Accident on Faith Home Rd at Hatch Rd.,2,Hughson,CA,10.0,13.8,,Clear,2019
+33,33,2019-01-01,A-418772,12:53:27,35.592419,-120.69551100000001,Accident on US-101 Southbound at US-101 Exit 228 / CA-46.,2,Paso Robles,CA,10.0,9.2,,Clear,2019
+34,34,2019-01-01,A-2056936,12:43:45,33.520769,-117.616105,At Ortega Hwy - Accident.,3,Ladera Ranch,CA,10.0,24.2,,Clear,2019
+35,35,2019-01-01,A-976630,11:07:22,40.731770000000004,-122.941162,Accident on Oregon St at Miner St.,2,Weaverville,CA,10.0,3.5,,Clear,2019
+36,36,2019-01-01,A-2375353,03:20:30,33.77625,-118.03585,Ramp closed to CA-22/Garden Grove Blvd - Road closed due to accident.,4,Garden Grove,CA,10.0,16.1,,Clear,2019
+37,37,2019-01-01,A-2570566,09:43:20,33.934551,-118.3526,Lane blocked due to accident on 111th St at Hawthorne Blvd.,2,Inglewood,CA,10.0,4.6,,Clear,2019
+38,38,2019-01-01,A-185666,02:01:50,33.96365,-118.36985,#2 #3 lane blocked due to accident on I-405 Northbound at Exit 44 Florence Ave.,3,Inglewood,CA,10.0,,,Partly Cloudy,2019
+39,39,2019-01-01,A-120939,16:00:16,34.12451,-117.91411000000001,At Vernon Ave - Accident. Three lanes blocked.,3,Azusa,CA,10.0,9.2,,Clear,2019
+40,40,2019-01-01,A-1299192,00:26:11,38.731239,-120.750626,Accident on US-50 Westbound at Smith Flat Rd.,3,Placerville,CA,10.0,12.7,,Clear,2019
+41,41,2019-01-01,A-1177801,11:15:43,37.988479999999996,-122.04041299999999,Accident on CA-242 Southbound at CA-242 Exit 2 / Grant St.,2,Concord,CA,10.0,,,Clear,2019
+42,42,2019-01-01,A-816016,03:45:15,34.433547999999995,-118.385999,At Soledad Canyon Rd - Accident.,3,Canyon Country,CA,10.0,17.0,0.0,Fair,2019
+43,43,2019-01-01,A-267048,04:39:46,38.661079,-121.36441,#2 lane blocked due to accident on Madison Ave at Hillsdale Blvd.,2,Sacramento,CA,10.0,12.7,,Clear,2019
+44,44,2019-01-01,A-2446664,02:30:17,33.771912,-117.99331699999999,Accident on entry ramp to CA-22 Westbound from Beach Blvd.,2,Westminster,CA,10.0,16.1,,Clear,2019
+45,45,2019-01-01,A-30011,12:21:15,37.40477,-122.4203,At Dehoff Canyon Rd - Accident.,2,Half Moon Bay,CA,10.0,13.8,,Clear,2019
+46,46,2019-01-01,A-229353,16:42:52,34.158665,-117.328148,Accident on I-215 Northbound at Exits 46A 46B CA-210.,3,San Bernardino,CA,7.0,12.7,,Clear,2019
+47,47,2019-01-01,A-1847733,04:55:14,36.123791,-119.321854,Accident on Road 112 at Avenue 184.,2,Tulare,CA,2.5,4.6,,Mostly Cloudy,2019
+48,48,2019-01-01,A-818322,11:30:38,39.216698,-120.775276,Accident on I-80 Westbound at Exit 148B Baxter Rd.,3,Alta,CA,10.0,8.1,,Clear,2019
+49,49,2019-01-01,A-1398442,13:52:45,33.873940000000005,-118.2319,At Wilmington Ave - Accident. Right lane blocked.,2,Compton,CA,10.0,4.6,,Clear,2019
+50,50,2019-01-01,A-1039777,06:44:28,36.77993,-121.70353700000001,Accident on CA-156 Westbound at Oak Hills Dr.,2,Salinas,CA,10.0,8.1,,Clear,2019
+51,51,2019-01-01,A-172181,10:03:37,33.60458,-117.69063600000001,Slow lane blocked due to accident on I-5 Southbound after Exit 90 Alicia Pkwy.,3,Mission Viejo,CA,10.0,20.7,,Clear,2019
+52,52,2019-01-01,A-2649970,13:04:00,34.04965,-118.44876000000001,At CA-2/Santa Monica Blvd/Exit 55A - Accident.,2,Los Angeles,CA,10.0,11.5,,Clear,2019
+53,53,2019-01-01,A-2777618,11:28:10,39.383884,-120.08524299999999,#1 lane blocked due to accident on I-80 Eastbound at Exit 194 Hirschdale Rd.,3,Truckee,CA,10.0,4.6,,Clear,2019
+54,54,2019-01-01,A-1279989,05:48:15,33.364478999999996,-117.086272,At Temecula - Accident.,2,Pala,CA,10.0,,,Clear,2019
+55,55,2019-01-01,A-1851857,11:22:18,40.732449,-122.963089,Accident on Oregon St at Upper Democrat Gulch.,2,Weaverville,CA,10.0,3.5,,Clear,2019
+56,56,2019-01-01,A-1397025,00:03:14,37.742203,-121.531143,Accident on I-205 Eastbound at Exit 2 Mountain House Pkwy.,3,Tracy,CA,10.0,9.2,,Clear,2019
+57,57,2019-01-01,A-1792136,12:33:33,33.925064,-118.209892,#3 #4 lane blocked due to accident on I-105 Westbound after Exit 12 Long Beach Blvd.,3,Lynwood,CA,10.0,12.7,,Clear,2019
+58,58,2019-01-01,A-2881812,00:49:09,37.932891999999995,-121.254997,Accident on B St at 9th St.,2,Stockton,CA,10.0,9.2,,Clear,2019
+59,59,2019-01-01,A-714182,15:25:23,38.26952,-121.64106799999999,Accident on CA-84 Ryer Island Rd at Elevator Rd.,2,Walnut Grove,CA,10.0,5.8,,Clear,2019
+60,60,2019-01-01,A-1516806,23:27:03,33.975945,-118.167686,Lane blocked due to accident on I-710 Southbound at Exits 17A 17B Atlantic Blvd.,3,Bell Gardens,CA,10.0,,,Clear,2019
+61,61,2019-01-01,A-2343897,17:00:32,38.245575,-122.07968100000001,Slow traffic due to accident on I-80 Westbound at Exits 44 44B Oliver Rd.,3,Fairfield,CA,10.0,4.6,,Clear,2019
+62,62,2019-01-01,A-1650000,04:54:15,33.70353,-117.3535,At Nichols Rd - Accident.,2,Lake Elsinore,CA,10.0,,,Clear,2019
+63,63,2019-01-01,A-2440288,11:37:42,34.182945000000004,-118.15969799999999,Lane blocked due to accident on Woodbury Rd at Lincoln Ave.,2,Altadena,CA,,,,,2019
+64,64,2019-01-01,A-2586594,10:31:32,37.526871,-122.51280200000001,Accident on CA-1 Cabrillo Hwy at Virginia Ave.,2,Moss Beach,CA,10.0,4.6,,Clear,2019
+65,65,2019-01-01,A-7043,03:01:27,38.076240999999996,-122.231812,Slow lane blocked due to accident on I-80 Eastbound from San Pablo Ave to CA-29 Sonoma Blvd.,3,Vallejo,CA,10.0,28.8,,Clear,2019
+66,66,2019-01-01,A-122906,04:16:00,33.1261,-117.32458999999999,At Palomar Airport Rd/Exit 47 - Accident.,2,Carlsbad,CA,10.0,,,Clear,2019
+67,67,2019-01-01,A-2478337,07:05:45,39.413132,-123.314857,Accident on Valley Rd at Valley Oaks Mobile Home Park.,2,Willits,CA,10.0,,,Clear,2019
+68,68,2019-01-01,A-2469002,01:35:06,37.374592,-120.59554299999999,Right lane blocked due to accident on CR-J7 Santa Fe Dr at Shaffer Rd.,3,Winton,CA,7.0,,,Clear,2019
+69,69,2019-01-01,A-600118,23:26:30,34.055462,-118.19034599999999,Right hand shoulder blocked due to accident on I-10 Westbound at Exit 20A Herbert Ave.,3,Los Angeles,CA,10.0,,,Clear,2019
+70,70,2019-01-01,A-28346,06:32:30,34.040534,-118.221589,Between 4th St/Exit 1A and 7th St - Accident.,3,Los Angeles,CA,10.0,,,Clear,2019
+71,71,2019-01-01,A-1931760,09:35:41,34.147022,-118.781067,Lane blocked due to accident on US-101 Westbound after Exit 38 Reyes Adobe Rd.,2,Agoura Hills,CA,10.0,13.8,,Clear,2019
+72,72,2019-01-01,A-1219394,04:51:32,37.006617999999996,-122.034103,Accident on Graham Hill Rd at Deer Path Rd.,2,Santa Cruz,CA,10.0,,,Clear,2019
+73,73,2019-01-01,A-1159734,15:13:46,34.059870000000004,-118.25187,Ramp to US-101/Santa Ana Fwy/Hollywood Fwy - Accident.,3,Los Angeles,CA,10.0,4.6,,Clear,2019
+74,74,2019-01-01,A-265267,11:27:23,39.190552000000004,-120.808929,Accident on Moody Ridge Rd at Lovers Leap Rd.,2,Dutch Flat,CA,10.0,8.1,,Clear,2019
+75,75,2019-01-01,A-2597697,21:20:30,38.55956,-121.37288999999998,At Watt Ave - Accident. Obstructions on the road. Danger.,3,Sacramento,CA,10.0,8.1,,Clear,2019
+76,76,2019-01-01,A-54749,10:52:35,38.769104,-122.995995,Accident on US-101 Northbound at US-101 Exit 518 / Dutcher Creek Rd.,2,Cloverdale,CA,10.0,4.6,,Partly Cloudy,2019
+77,77,2019-01-01,A-545618,06:30:09,38.221931,-122.265152,Accident on Gateway Dr at Airport Blvd.,2,Napa,CA,10.0,20.7,,Clear,2019
+78,78,2019-01-01,A-1083821,03:45:33,33.856113,-117.985954,Middle lane blocked due to accident on Ca-91 Hov Ln Eastbound before Exit 23C I-5.,2,Buena Park,CA,10.0,13.8,,Clear,2019
+79,79,2019-01-01,A-1852765,07:40:45,34.036970000000004,-118.08877,Between Paramount Blvd and San Gabriel Blvd - Accident.,2,Montebello,CA,10.0,8.1,,Clear,2019
+80,80,2019-01-01,A-373193,08:51:15,33.781364,-118.20753,At Anaheim St - Accident.,2,Long Beach,CA,10.0,3.5,,Clear,2019
+81,81,2019-01-01,A-946707,00:17:25,37.886841,-122.07389099999999,Accident on Olympic Blvd at Bridge Rd.,2,Walnut Creek,CA,10.0,9.2,,Clear,2019
+82,82,2019-01-01,A-2364942,03:53:55,38.099983,-122.229652,Accident on I-80 Eastbound at Georgia St.,3,Vallejo,CA,10.0,13.8,,Clear,2019
+83,83,2019-01-01,A-1529978,02:26:53,37.925758,-121.732918,#1 lane blocked due to accident and car fire on CA-4 Eastbound at Balfour Rd.,2,Brentwood,CA,10.0,,,Clear,2019
+84,84,2019-01-01,A-2028684,11:31:13,34.273323,-119.134323,Accident on CA-118 Los Angeles Ave at CA-232 Vineyard Ave.,2,Oxnard,CA,10.0,18.4,,Clear,2019
+85,85,2019-01-01,A-2186879,05:03:15,33.31436,-117.19515,Closed at Via Monserate - Road closed due to accident.,4,Fallbrook,CA,10.0,10.4,,Clear,2019
+86,86,2019-01-01,A-16769,12:41:07,38.547668,-119.835297,Accident on CA-4 at Highland Lakes Rd.,2,Markleeville,CA,10.0,,,Clear,2019
+87,87,2019-01-01,A-2017593,08:21:47,34.151661,-118.141609,#1 lane blocked due to accident on I-210 Eastbound before Exit 25B Los Robles Ave.,3,Pasadena,CA,,,,,2019
+88,88,2019-01-01,A-1627440,03:12:52,37.650471,-121.66233799999999,Accident on CR-J2 Tesla Rd Eastbound at Victoria Ln.,2,Livermore,CA,10.0,,,Clear,2019
+89,89,2019-01-01,A-2014979,17:52:18,34.069649,-117.79729499999999,Right hand shoulder blocked due to accident on I-10 Westbound at Exits 43 44 Fairplex Dr.,3,Pomona,CA,10.0,,,Clear,2019
+90,90,2019-01-01,A-398000,09:06:12,37.386616,-121.905556,Accident on I-880 Southbound at I-880 Exit 5 / Brokaw Rd.,3,San Jose,CA,10.0,11.5,,Mostly Cloudy,2019
+91,91,2019-01-01,A-1124310,04:17:19,34.196838,-118.702301,Accident on Saddlebow Rd at Bell Canyon Rd.,2,Bell Canyon,CA,10.0,17.3,,Clear,2019
+92,92,2019-01-01,A-605241,14:09:15,36.96914,-119.58843999999999,At Rusty Spur - Accident.,2,Clovis,CA,4.0,3.5,,Haze,2019
+93,93,2019-01-01,A-605948,18:47:11,35.423199,-119.021217,Accident on Arvin St both ways around Chester Ave.,2,Bakersfield,CA,8.0,,,Clear,2019
+94,94,2019-01-01,A-1454655,14:07:28,38.900203999999995,-119.998398,Queueing traffic due to accident on CA-89 Westbound at G St.,2,South Lake Tahoe,CA,10.0,,,Clear,2019
+95,95,2019-01-01,A-1342883,17:06:22,37.691047999999995,-122.07076299999999,Accident on I-580 Westbound at Exits 36 36A 37 Crow Canyon Rd.,3,Castro Valley,CA,10.0,,,Clear,2019
+96,96,2019-01-01,A-1862416,02:54:59,37.774399,-122.406204,#1 an d#2 lane blocked due to accident on I-80 Eastbound at 7th St.,3,San Francisco,CA,10.0,23.0,,Clear,2019
+97,97,2019-01-01,A-736214,00:57:27,36.837379,-119.62098700000001,Accident on Herndon Ave at Thompson Ave.,2,Clovis,CA,3.0,,,Clear,2019
+98,98,2019-01-01,A-103808,08:09:15,34.032165,-117.97080700000001,At S 7th Ave/N Sunset Ave - Accident. Overturned vehicle. Danger.,3,La Puente,CA,10.0,8.1,,Clear,2019
+99,99,2019-01-01,A-104297,04:31:00,33.928740000000005,-118.25041,At Central Ave - Accident.,2,Los Angeles,CA,9.0,,,Clear,2019
